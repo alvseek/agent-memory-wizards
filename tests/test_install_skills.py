@@ -28,7 +28,7 @@ _spec.loader.exec_module(sk)
 _MANIFEST = ".agent-memory-wizards-opencode-manifest"
 _SIBLING_MANIFESTS = [
     ".agent-memory-opencode-manifest",
-    ".agent-memory-coding-skill-opencode-manifest",
+    ".agent-memory-project-opencode-manifest",
     ".agent-memory-fleet-opencode-manifest",
 ]
 

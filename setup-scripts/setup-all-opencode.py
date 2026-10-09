@@ -42,12 +42,18 @@ _spec.loader.exec_module(_skills)
 
 MANIFEST_NAME = ".agent-memory-wizards-opencode-manifest"
 CORE_MANIFEST_NAME = ".agent-memory-opencode-manifest"
-CODING_MANIFEST_NAME = ".agent-memory-coding-skill-opencode-manifest"
+PROJECT_MANIFEST_NAME = ".agent-memory-project-opencode-manifest"
+LOCAL_MANIFEST_NAME = ".agent-memory-local-opencode-manifest"
 FLEET_MANIFEST_NAME = ".agent-memory-fleet-opencode-manifest"
 
 # Protect every sibling's skills: all four installers share one skills directory, so a stale
 # wizards entry must never delete a skill the core, overlay or fleet owns.
-SIBLING_MANIFEST_NAMES = [CORE_MANIFEST_NAME, CODING_MANIFEST_NAME, FLEET_MANIFEST_NAME]
+SIBLING_MANIFEST_NAMES = [
+    CORE_MANIFEST_NAME,
+    PROJECT_MANIFEST_NAME,
+    LOCAL_MANIFEST_NAME,
+    FLEET_MANIFEST_NAME,
+]
 
 
 def _config_base() -> Path:

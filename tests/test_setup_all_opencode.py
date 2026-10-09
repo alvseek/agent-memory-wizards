@@ -24,10 +24,11 @@ def test_manifest_name_is_the_wizards_one() -> None:
 
 
 def test_siblings_cover_every_other_repo() -> None:
-    """All four installers share one skills directory, so every sibling must be protected."""
+    """All five installers share one skills directory, so every sibling must be protected."""
     assert so.SIBLING_MANIFEST_NAMES == [
         ".agent-memory-opencode-manifest",
-        ".agent-memory-coding-skill-opencode-manifest",
+        ".agent-memory-project-opencode-manifest",
+        ".agent-memory-local-opencode-manifest",
         ".agent-memory-fleet-opencode-manifest",
     ]
     assert so.MANIFEST_NAME not in so.SIBLING_MANIFEST_NAMES
