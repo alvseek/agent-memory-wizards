@@ -214,6 +214,26 @@ def test_wizards_path_registration_is_idempotent(tmp_path: Path) -> None:
     assert instructions.read_text(encoding="utf-8").count(sk._PATH_DEF_UUID) == 1
 
 
+def test_overlay_path_is_repointed_when_the_repo_moves(tmp_path: Path) -> None:
+    """A relocated clone must replace the stale path, not skip it as 'already registered'."""
+    instructions = tmp_path / "AGENTS.md"
+    instructions.write_text(
+        "# Global instructions\n"
+        "- **[path-to-agent-memory-wizards]** = `C:/Work/IM/agent-memory-old`"
+        f"  <!-- overlay-path-def {sk._PATH_DEF_UUID} -->\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    moved = tmp_path / "agent-memory-wizards"
+
+    result = sk.register_path(instructions, moved)
+    body = instructions.read_text(encoding="utf-8")
+    assert "Updated" in result
+    assert moved.as_posix() in body
+    assert "agent-memory-old" not in body
+    assert body.count(sk._PATH_DEF_UUID) == 1
+
+
 def test_env_registration_is_idempotent(tmp_path: Path) -> None:
     """The env block is written only when absent, so a core-provided block is never duplicated."""
     instructions = tmp_path / "AGENTS.md"
