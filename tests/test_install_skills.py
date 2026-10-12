@@ -50,6 +50,7 @@ _KNOWN = {
     "implement-plan",
     "analyze-code-quality",
     "wait-options-coding",
+    "dockerize",
 }
 
 

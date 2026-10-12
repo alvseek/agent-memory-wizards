@@ -45,6 +45,7 @@ CORE_MANIFEST_NAME = ".agent-memory-opencode-manifest"
 PROJECT_MANIFEST_NAME = ".agent-memory-project-opencode-manifest"
 LOCAL_MANIFEST_NAME = ".agent-memory-local-opencode-manifest"
 FLEET_MANIFEST_NAME = ".agent-memory-fleet-opencode-manifest"
+DOC_MANIFEST_NAME = ".agent-memory-doc-opencode-manifest"
 
 # Protect every sibling's skills: all four installers share one skills directory, so a stale
 # wizards entry must never delete a skill the core, overlay or fleet owns.
@@ -53,6 +54,7 @@ SIBLING_MANIFEST_NAMES = [
     PROJECT_MANIFEST_NAME,
     LOCAL_MANIFEST_NAME,
     FLEET_MANIFEST_NAME,
+    DOC_MANIFEST_NAME,
 ]
 
 

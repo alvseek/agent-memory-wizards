@@ -2,7 +2,7 @@
 
 The **wizards add-on** of the [agent-memory](https://github.com/alvseek/agent-memory-system) framework, and a member of the **Hermod family** beside the coding overlay ([agent-memory-project](https://github.com/alvseek/agent-memory-project)) and the fleet ([agent-memory-fleet](https://github.com/alvseek/agent-memory-fleet)).
 
-This repo holds the planning-and-verification cluster: the wizard protocols (`/quick-wizard`, `/high-wizard`, `/pixel-wizard`, `/council-of-wizards`, `/rite-of-creation`, `/forge-of-covenant`), `/implement-plan`, the QA pipeline (`/map-qa-instrument`, `/build-qa-bench`, `/integration-test`, `/run-qa-test`, `/qa-status`, `/generate-qa-checklist`, `/analyze-code-quality`, `/generate-standard`, `/setup-qa-visual-instrument`), and the coding decision format `/wait-options-coding`. They run by writing and executing plan artifacts, which the coding overlay composes but does not own, so the cluster is its own capability.
+This repo holds the planning-and-verification cluster: the wizard protocols (`/quick-wizard`, `/high-wizard`, `/pixel-wizard`, `/council-of-wizards`, `/rite-of-creation`, `/forge-of-covenant`), `/implement-plan`, the QA pipeline (`/map-qa-instrument`, `/build-qa-bench`, `/integration-test`, `/run-qa-test`, `/qa-status`, `/generate-qa-checklist`, `/analyze-code-quality`, `/generate-standard`, `/setup-qa-visual-instrument`), the coding decision format `/wait-options-coding`, and `/dockerize`. They run by writing and executing plan artifacts, which the coding overlay composes but does not own, so the cluster is its own capability.
 
 ## Relationship to the family
 
@@ -12,7 +12,7 @@ This repo holds the planning-and-verification cluster: the wizard protocols (`/q
 
 ## Contents
 
-- **procedures/**: the six wizards, `implement-plan`, the QA pipeline, `wait-options-coding`
+- **procedures/**: the six wizards, `implement-plan`, the QA pipeline, `wait-options-coding`, `dockerize`
 - **components/**: the shared planning / handoff / review fragments plus `archive-plan` and `build-riao-mechanisms`
 - **templates/**: `adr-template`, `qa-readme-template`, `quality-standard-template`
 - **plan-templates/**: the wizard plan templates plus `code-quality-analysis-template`

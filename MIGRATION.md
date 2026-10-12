@@ -42,3 +42,19 @@ Per-file commit history remains in `agent-memory-coding-skill`. This repo starts
 
 This repo declares **no** access: nothing calls it. It reads the core (its `wait-options-coding`
 invokes the core `/wait-options`). See the overlay's `docs/adr/` for the family model.
+
+## 2026-10-12 - `dockerize` arrived from the overlay
+
+`dockerize` moved here from `agent-memory-project`. The overlay had kept it as part of its
+shell - *"the overlay keeps the shell (`awaken-coder`, `project-wrap-up`, `dockerize`,
+push/pull)"*, above - and that one clause is now superseded.
+
+It came for the same reason the earlier cluster did, viewed one layer out: `dockerize` **emits
+artifacts** (a Dockerfile per deployable unit, a `.dockerignore` beside each, one Compose file
+at their common ancestor) rather than tending a session or a project's memory. Removing it
+left the overlay holding the shell, project memory and push/pull, which is the surface the
+coding overlay now stands on.
+
+This is the first move **into** this repo, and it crosses the boundary ADR-021 drew, so the
+family model in the overlay's `docs/adr/` records it: **ADR-024**, alongside the extraction of
+the `agent-memory-doc` documentation cluster from the same overlay on the same day.
