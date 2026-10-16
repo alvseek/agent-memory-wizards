@@ -17,7 +17,7 @@ If no arguments provided, ask: "What feature should I create a Council of Wizard
 
 This is a **Level 2** wizard protocol: it breaks one feature into sub-plans and orchestrates them at Level 1 (`/high-wizard`), Level 1v (`/pixel-wizard`), or Level 0 (`/quick-wizard`). It is itself launched as a sub-plan when `/rite-of-creation` or `/forge-of-covenant` has a milestone or phase carrying several features. The flow is: WAIT Options → Requirements → Scope Gate → Decompose → Contracts → Dependencies → Execute → QA Handoff → Complete.
 
-Level 2 is decomposition altitude, so that is what you collect decisions about: where the sub-plan boundaries fall, which requirements group together, the integration contracts *between* sub-plans, what can run in parallel, and which protocol fits each one. Disclose the seams rather than the internals — what crosses each boundary, the shape of each contract, which side produces and which consumes. How a sub-plan is built *inside* is not yours: its modules, algorithms, file layout and local trade-offs belong to the `/high-wizard`, `/pixel-wizard`, or `/quick-wizard` it is assigned to, and settling them here commits that child before it has investigated — which it will then re-ask anyway. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
+Level 2 is decomposition altitude, so that is what you collect decisions about: where the sub-plan boundaries fall, which requirements group together, the integration contracts *between* sub-plans, what can run in parallel, and which protocol fits each one — that last rule is the Level Selection component's, read at Step 10. Disclose the seams rather than the internals — what crosses each boundary, the shape of each contract, which side produces and which consumes. How a sub-plan is built *inside* is not yours: its modules, algorithms, file layout and local trade-offs belong to the `/high-wizard`, `/pixel-wizard`, or `/quick-wizard` it is assigned to, and settling them here commits that child before it has investigated — which it will then re-ask anyway. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
 
 Two decision rounds follow that altitude, in this order: the **requirements round**, which fixes what the feature must deliver and therefore what there is to decompose; then the **decomposition round**, which settles the boundaries, the contracts, the protocol for each sub-plan and the parallel strategy named above. Build one, present it, and wait for [USER-NAME] to clear it before building the next.
 
@@ -73,9 +73,11 @@ After [USER-NAME] confirms the WAIT Options, fill the formal plan sections:
 2. **Fill Scope Gate** — Evaluate the confirmed requirements against the scope gate criteria:
 
    **Council is needed when ANY of these are true:**
-   - Feature has **independently shippable sub-deliverables** that build on each other
-   - Feature requires **integration contracts** between parts (one plan produces what another consumes)
-   - Scope is **too large for a single `/high-wizard`** to cover without losing detail
+   - The work holds **several deliverables, released together**, rather than one
+   - It requires **integration contracts** between parts (one plan produces what another consumes)
+   - The scope is **too large for a single `/high-wizard`** to cover without losing detail
+
+   **It is not needed when** the work is one deliverable whose release finishes it (a single `/high-wizard`), or when its parts must pass phases that gate each other (that is `/rite-of-creation`).
 
    Fill the [Scope Gate]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#scope-gate) section with assessment.
 
@@ -117,7 +119,7 @@ Group the confirmed requirements into sub-plans, **informed by the confirmed dec
 
 **Guidelines:**
 - Each sub-plan groups related requirements that naturally belong together
-- Choose protocol per sub-plan: `/high-wizard` for complex deliverables, `/pixel-wizard` when the deliverable is design-driven and has a visual reference to match, `/quick-wizard` for simple ones
+- Choose the protocol per sub-plan by reading the [Level Selection component]([path-to-agent-memory-wizards]/components/level-selection.md) — it decides from what the sub-plan holds, and `/rite-of-creation` is not among the choices here: a sub-plan that needs its own gated phases means the boundary was drawn wrong.
 - Name sub-plan files inside the council folder: `SP-[N]-[subplan-name].md` (e.g., `SP-1-api-endpoints.md`). A `/quick-wizard` sub-plan keeps its plan in plan mode or in conversation, so it is written to that path once approved, at Step 17.
 - Assign IDs: SP-1, SP-2, SP-3...
 

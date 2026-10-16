@@ -1,6 +1,6 @@
 # Rite of Creation Protocol
 
-Orchestrate an entire project from idea/vision to a working product. Decomposes the project into SDLC phases, selects which phases apply, assigns protocols and agent roles per phase, enforces phase exit criteria, and tracks execution through to project completion.
+Orchestrate one deliverable through the phases that gate its release. Decomposes the work into SDLC phases, selects which phases apply, assigns protocols and agent roles per phase, enforces phase exit criteria, and tracks execution through to a deliverable that is ready to reach its consumers.
 
 ## Arguments
 
@@ -15,9 +15,11 @@ If no arguments provided, ask: "What project do you want to create from scratch?
 
 ## Procedure
 
-This is a **Level 3** wizard protocol: it orchestrates SDLC phases, where each phase runs as a `/council-of-wizards` (Level 2), `/high-wizard` (Level 1), `/pixel-wizard` (Level 1v), or `/quick-wizard` (Level 0). The flow is: Vision → WAIT Options Round 1 (project decisions) → Phase Menu + Scope Gate → WAIT Options Round 2 (phase planning) → Exit Criteria → Dependencies → Execute → Complete.
+This is a **Level 3** wizard protocol: it owns the **phase**, work of a kind that gates the next kind, and it orchestrates the phases that carry one deliverable to its release, where each phase runs as a `/council-of-wizards` (Level 2), `/high-wizard` (Level 1), `/pixel-wizard` (Level 1v), or `/quick-wizard` (Level 0). It is itself launched as a milestone by `/forge-of-covenant`. The flow is: Vision → WAIT Options Round 1 (project decisions) → Phase Menu + Scope Gate → WAIT Options Round 2 (phase planning) → Exit Criteria → Dependencies → Execute → Complete.
 
-Level 3 is phase altitude, so that is what you collect decisions about: which SDLC phases apply and which are skipped, the protocol and role assigned to each, the exit criteria that gate them, dependencies and parallel opportunities, and the project-wide constraints that bind every phase — platform, stack direction, hard deadlines. Disclose phase-level shape: what each phase must produce before the next can start, and where the sequencing is genuinely hard rather than merely convenient. Feature decomposition is not yours — it belongs to `/council-of-wizards` — and neither is implementation, which belongs to `/high-wizard`, `/pixel-wizard`, or `/quick-wizard`; choosing a module layout or an algorithm here decides for a phase nobody has investigated yet. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
+Being a whole new project is the largest case of that, not the only one: a greenfield run carries every phase, while a single large feature in an existing repository carries the subset it needs, which is what the Phase Menu is for. A project is simply a deliverable whose consumers are everyone.
+
+Level 3 is phase altitude, so that is what you collect decisions about: which SDLC phases apply and which are skipped, the protocol and role assigned to each, the exit criteria that gate them, dependencies and parallel opportunities, and the constraints that bind every phase — platform, stack direction, hard deadlines. Disclose phase-level shape: what each phase must produce before the next can start, and where the sequencing is genuinely hard rather than merely convenient. Feature decomposition is not yours — it belongs to `/council-of-wizards` — and neither is implementation, which belongs to `/high-wizard`, `/pixel-wizard`, or `/quick-wizard`; choosing a module layout or an algorithm here decides for a phase nobody has investigated yet. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
 
 A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a phase at Step 15 or de-escalating to `/council-of-wizards` or `/high-wizard` at Step 7, read and follow the [Subplan Handoff component]([path-to-agent-memory-wizards]/components/subplan-handoff-write.md) and pass that payload with it. **A path alone is not a handoff.**
 
@@ -38,13 +40,15 @@ mkdir -p ./plans/[YYYY-MM-DD]-[project]-rite-of-creation
 cp [path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md ./plans/[YYYY-MM-DD]-[project]-rite-of-creation/core-plan.md
 ```
 
-### Step 4: Fill Project Vision
+### Step 4: Fill Vision
 
-Fill the [Project Vision]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#project-vision) section (Project, Date, Agent Role, Vision, Target Users, Success Feeling)
+Fill the [Project Vision]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#project-vision) section (Project, Date, Agent Role, Vision, Target Users, Success Feeling). When a covenant launched this rite, the vision, the audience and the target scope all arrive in the inherited context you read at Step 5, so record them from there rather than asking again.
 
-### Step 5: Investigate Project + Prepare WAIT Options Round 1
+### Step 5: Read Inherited Context + Investigate Project + Prepare WAIT Options Round 1
 
-Investigate to understand what [USER-NAME] wants to build. This happens BEFORE any table filling — the agent must align understanding with [USER-NAME] first.
+**First, if anything was settled before you started** — a `/forge-of-covenant` milestone that launched this rite, or a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it in the plan's `## INHERITED CONTEXT` section before investigating anything.
+
+Then investigate to understand what [USER-NAME] wants to build. This happens BEFORE any table filling — the agent must align understanding with [USER-NAME] first.
 
 **Investigation approach:**
 1. **Understand the vision** — What is being built? For whom? What problem does it solve?
@@ -52,8 +56,6 @@ Investigate to understand what [USER-NAME] wants to build. This happens BEFORE a
 3. **Research context** — Does related code exist? Any existing repos, designs, or specifications?
 4. **Tech stack considerations** — What languages, frameworks, infrastructure fit this project?
 5. **Constraints and risks** — Budget, timeline, technical limitations, team capabilities?
-
-Invoke the `/wait-options-coding` command procedure to guide collecting project-level decisions — run the command; its format rules are not in context.
 
 Be thorough — these are foundational decisions that shape every phase downstream.
 
@@ -72,15 +74,17 @@ After [USER-NAME] confirms the WAIT Options Round 1, fill the formal plan sectio
 
 2. **Fill Phase Menu** — Based on the confirmed project decisions, propose which SDLC phases apply. For each of the 9 phases:
    - Mark ✓ (included) or — (skipped) with rationale
-   - Recommend protocol level: `/council-of-wizards` for complex phases with multiple features, `/high-wizard` for single-deliverable phases, `/pixel-wizard` for design-driven phases with a visual reference to match, `/quick-wizard` for simple phases
+   - Recommend protocol level: read and follow the [Level Selection component]([path-to-agent-memory-wizards]/components/level-selection.md) — it decides this from what the phase holds
    - Recommend agent role (generic roles, not specific agent names)
 
-3. **Fill Scope Gate** — Evaluate the project against the scope gate criteria:
+3. **Fill Scope Gate** — Evaluate the work against the scope gate criteria:
 
-   **Rite of Creation is needed when ANY of these are true:**
-   - Project requires **multiple SDLC phases** (not just one)
-   - Project scope spans **architecture + implementation + delivery**
-   - **At least one phase requires Council-level coordination** (CoW) — if all phases are HW/QW, a single CoW suffices instead of RoC
+   **Rite of Creation is needed when the work holds phases that gate each other:**
+   - Reaching the deliverable's consumers needs **work of more than one kind, in an order that matters** — design before build, build before verify, verify before release
+   - The deliverable must pass **at least one phase that is not implementation** — a migration, a cutover, a rollout, monitoring
+   - The sequence needs **exit criteria enforced**, so a later phase cannot start on an unverified earlier one
+
+   **It is not needed when** the work is one deliverable whose release finishes it (a single `/high-wizard`, or `/pixel-wizard` when design-led), or several deliverables closing independently (a single `/council-of-wizards`).
 
    Fill the [Scope Gate]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#scope-gate) section with assessment.
 
@@ -88,14 +92,14 @@ After [USER-NAME] confirms the WAIT Options Round 1, fill the formal plan sectio
 
 STOP. Present to [USER-NAME] for review. Do NOT proceed to phase planning until [USER-NAME] confirms the phase menu and scope gate assessment.
 
-**If scope gate fails to Council** (scope is actually a single phase):
-1. Tell [USER-NAME]: "This project fits a single `/council-of-wizards`. De-escalating."
+**If the scope gate sends it to Council** (the work is several deliverables that close independently):
+1. Tell [USER-NAME]: "This work is several independent deliverables, which fits a single `/council-of-wizards`. De-escalating."
 2. Delete the rite plan folder
 3. Launch `/council-of-wizards` with the project context — passing the handoff payload so the decisions gathered via WAIT Options carry forward
 4. STOP this procedure
 
-**If scope gate fails to HW** (scope is a single deliverable):
-1. Tell [USER-NAME]: "This project fits a single `/high-wizard`. De-escalating."
+**If the scope gate sends it to HW** (the work is one deliverable whose release finishes it):
+1. Tell [USER-NAME]: "This work is one deliverable, which fits a single `/high-wizard`. De-escalating."
 2. Delete the rite plan folder
 3. Launch `/high-wizard` with the project context — passing the handoff payload so the decisions gathered via WAIT Options carry forward
 4. STOP this procedure

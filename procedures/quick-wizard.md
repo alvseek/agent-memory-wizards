@@ -15,7 +15,7 @@ If no arguments provided, ask: "What feature or task should I create a Quick Wiz
 
 ## Procedure
 
-This is a **Level 0** wizard protocol: the smallest unit of planned work. It is a leaf — it never orchestrates sub-plans — and it may itself be launched as a sub-plan by `/council-of-wizards`, `/rite-of-creation`, or `/forge-of-covenant`.
+This is a **Level 0** wizard protocol: it owns the **change**, one small change below the deliverable. It is a leaf — it never orchestrates sub-plans — and it may itself be launched as a phase by `/rite-of-creation` or a sub-plan by `/council-of-wizards`. It is never a milestone, because it sits below the release boundary.
 
 Level 0 is the concrete change, so that is what you collect decisions about — Step 3 names the categories, the condition each one runs under, and the order they are asked in; at this size most will not run at all. Implementation nouns — entrypoints, core logic, execution touchpoints — are the right vocabulary to disclose in, because they are what this altitude is made of. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — Step 3 is where that is decided.) Nothing gets pushed down; a decision that feels too large to settle here is not something to hand off, it is the scope gate in Step 2 telling you to escalate to `/high-wizard`.
 

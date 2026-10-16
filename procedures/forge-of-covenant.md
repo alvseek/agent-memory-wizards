@@ -15,7 +15,7 @@ If no arguments provided, ask: "What project do you want to plan across multiple
 
 ## Procedure Rules
 
-This is a **Level 4** wizard protocol, the highest: it orchestrates milestones, where each milestone runs as a `/rite-of-creation` (Level 3), `/council-of-wizards` (Level 2), `/high-wizard` (Level 1), `/pixel-wizard` (Level 1v), or `/quick-wizard` (Level 0). The flow is: Explore (7Q) → Decide (WAIT Options Round 1) → Plan (Roadmap + WAIT Options Round 2) → Detail (Milestones + WAIT Options Round 3) → Review → Execute.
+This is a **Level 4** wizard protocol, the highest: it owns the **milestone**, a release boundary, and it orchestrates milestones, where each milestone runs as a `/rite-of-creation` (Level 3), `/council-of-wizards` (Level 2), `/high-wizard` (Level 1) or `/pixel-wizard` (Level 1v). A `/quick-wizard` is never a milestone — it sits below the release boundary, so it is a phase inside a rite or a sub-plan inside a council. The flow is: Explore (7Q) → Decide (WAIT Options Round 1) → Plan (Roadmap + WAIT Options Round 2) → Detail (Milestones + WAIT Options Round 3) → Review → Execute.
 
 Level 4 is milestone altitude, so that is what you collect decisions about: the project vision and what "done" means for the whole of it, where each release boundary falls and what ships inside it, what is deliberately deferred and to which milestone, the principles and non-negotiables that bind every one of them, and the known debt along with where it gets paid. Disclose milestone-level shape: which services or components a release spans, and what must exist before the next milestone can begin. Everything below that belongs to someone else — phase structure to `/rite-of-creation`, feature decomposition to `/council-of-wizards`, implementation to `/high-wizard`, `/pixel-wizard`, or `/quick-wizard` — because at this altitude a stack or module choice is a guess about work three levels down. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
 
@@ -245,7 +245,7 @@ For each milestone in the confirmed roadmap, discuss the detailed scope with [US
 - Which services/components are included in this release?
 - What specific deliverables will be produced?
 - What gets deferred to a later milestone? Why?
-- What protocol level fits? (RoC for complex milestones with multiple SDLC phases, CoW for multi-feature milestones, HW for simple milestones, PW when the milestone is design-driven with a visual reference to match)
+- What protocol level fits? Read and follow the [Level Selection component]([path-to-agent-memory-wizards]/components/level-selection.md) — it decides this from what the milestone holds, and it is the only place that rule is stated.
 - Any known technical debt that will be created?
 
 Invoke the `/wait-options-coding` command procedure to guide collecting milestone-level decisions — run the command; its format rules are not in context. These are decisions about HOW each milestone will be executed. Group decisions by milestone (M1, M2, etc.).
@@ -331,7 +331,7 @@ After [USER-NAME] instructs to start, execute milestones following the dependenc
 
 **For each milestone:**
 1. Check dependency graph — are all prerequisite milestones DONE?
-2. If prerequisites met, launch the milestone using its designated protocol (`/rite-of-creation`, `/council-of-wizards`, `/high-wizard`, `/pixel-wizard`, or `/quick-wizard`) and **pass the handoff payload** with it. **Important**: The milestone's plan file must also be created inside the milestone sub-folder within the covenant folder (e.g., `M1-name/core-plan.md`), overriding the sub-protocol's default `plans/` location.
+2. If prerequisites met, launch the milestone using its designated protocol (`/rite-of-creation`, `/council-of-wizards`, `/high-wizard`, or `/pixel-wizard`) and **pass the handoff payload** with it. **Important**: The milestone's plan file must also be created inside the milestone sub-folder within the covenant folder (e.g., `M1-name/core-plan.md`), overriding the sub-protocol's default `plans/` location.
 3. Update the Execution Log: status → IN PROGRESS, record start date, record protocol used
 4. After milestone completes, update: status → DONE, record completion date
 5. If milestone is blocked, update: status → BLOCKED, record reason in Notes

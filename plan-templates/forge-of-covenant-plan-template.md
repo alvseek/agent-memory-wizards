@@ -242,7 +242,7 @@ graph LR
 *Track progress of each milestone. This is the single source of truth for project-level progress. Each milestone's own plan file (created by the sub-protocol) has its own detailed execution log.*
 
 **Execution Protocol for AI**:
-I have to use this document as my **ONLY** source of truth to track which milestones are done and which are next. For each milestone, I launch `/rite-of-creation`, `/council-of-wizards`, `/high-wizard`, or `/quick-wizard` as appropriate, then update this log.
+I have to use this document as my **ONLY** source of truth to track which milestones are done and which are next. For each milestone, I launch `/rite-of-creation`, `/council-of-wizards`, `/high-wizard`, or `/pixel-wizard` as appropriate, then update this log.
 
 | Milestone | Status | Protocol Used | Plan File | Started | Completed | Notes |
 |-----------|--------|--------------|-----------|---------|-----------|-------|

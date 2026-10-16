@@ -13,6 +13,34 @@
 
 ---
 
+## **INHERITED CONTEXT**
+*Filled at investigation step 0 with whatever was settled before this plan existed. The two sources are recorded separately and never merged — write "None" under a part that does not apply.*
+*These decisions are **not yours to reopen**. If one looks wrong, STOP and surface it to [USER-NAME] — do not silently re-decide it here or in Project Decisions below.*
+
+### From the Parent Plan
+- **Parent plan**: [path to the parent `core-plan.md` in the covenant folder, or "None — not a sub-plan"]
+- **Assigned scope**: [the milestone this rite owns, and what it must deliver]
+
+| # | Inherited decision | Chosen | Parent's reason | Status |
+|---|--------------------|--------|-----------------|--------|
+| 1 | [Decision topic] | [Chosen option] | [Reason, verbatim from the parent] | Settled / My call |
+
+- **Integration contracts**: [`contracts/*.yaml` paths this rite must honor, and whether it produces or consumes each — or "None"]
+- **Pushed-down open items**: [decisions the parent deliberately left to this rite — or "None"]
+
+### From Pre-Planning Discussion
+- **Discussion**: ["Pre-planning discussion with [USER-NAME], YYYY-MM-DD", or "None — no pre-planning discussion"]
+- **Agreed scope**: [what the discussion established this work covers]
+
+| # | Settled decision | Chosen | His reason | Status |
+|---|------------------|--------|------------|--------|
+| 1 | [Decision topic] | [Chosen option] | [Reason, verbatim from the discussion] | Settled / My call |
+
+- **Considered and rejected**: [option → why it lost — or "None"]
+- **Left open**: [decisions the discussion deliberately did not make — or "None"]
+
+---
+
 ## **PROJECT DECISIONS**
 *These decisions were collected during project investigation (WAIT Options Round 1) and confirmed by [USER-NAME]. The reasons serve as the analysis record for foundational project choices.*
 
@@ -28,17 +56,17 @@
 
 | # | Phase | Included | Protocol | Recommended Role | Rationale |
 |---|-------|----------|----------|-----------------|-----------|
-| 1 | Discovery & Vision | ✓ / — | CoW / HW / QW | Product Owner / Business Analyst | [Why include/skip] |
-| 2 | Requirements & Specification | ✓ / — | CoW / HW / QW | Product Owner + Domain Expert | [Why include/skip] |
-| 3 | Architecture & Design | ✓ / — | CoW / HW / QW | Software Architect | [Why include/skip] |
-| 4 | Project Setup / Scaffolding | ✓ / — | CoW / HW / QW | Domain Engineer | [Why include/skip] |
-| 5 | Core Development (MVP) | ✓ / — | CoW / HW / QW | Domain Engineer(s) | [Why include/skip] |
-| 6 | Testing & QA | ✓ / — | CoW / HW / QW | QA Engineer | [Why include/skip] |
-| 7 | Deployment & Infrastructure | ✓ / — | CoW / HW / QW | DevOps / Infrastructure Engineer | [Why include/skip] |
-| 8 | Launch / Go-Live | ✓ / — | CoW / HW / QW | Product Owner + Domain Engineer | [Why include/skip] |
-| 9 | Post-Launch / Operations | ✓ / — | CoW / HW / QW | Domain Engineer + QA Engineer | [Why include/skip] |
+| 1 | Discovery & Vision | ✓ / — | CoW / HW / PW / QW | Product Owner / Business Analyst | [Why include/skip] |
+| 2 | Requirements & Specification | ✓ / — | CoW / HW / PW / QW | Product Owner + Domain Expert | [Why include/skip] |
+| 3 | Architecture & Design | ✓ / — | CoW / HW / PW / QW | Software Architect | [Why include/skip] |
+| 4 | Project Setup / Scaffolding | ✓ / — | CoW / HW / PW / QW | Domain Engineer | [Why include/skip] |
+| 5 | Core Development (MVP) | ✓ / — | CoW / HW / PW / QW | Domain Engineer(s) | [Why include/skip] |
+| 6 | Testing & QA | ✓ / — | CoW / HW / PW / QW | QA Engineer | [Why include/skip] |
+| 7 | Deployment & Infrastructure | ✓ / — | CoW / HW / PW / QW | DevOps / Infrastructure Engineer | [Why include/skip] |
+| 8 | Launch / Go-Live | ✓ / — | CoW / HW / PW / QW | Product Owner + Domain Engineer | [Why include/skip] |
+| 9 | Post-Launch / Operations | ✓ / — | CoW / HW / PW / QW | Domain Engineer + QA Engineer | [Why include/skip] |
 
-**How to fill**: For each phase, mark ✓ (included) or — (skipped). Choose protocol level: `/council-of-wizards` (CoW) for complex phases with multiple features, `/high-wizard` (HW) for single-deliverable phases, `/quick-wizard` (QW) for simple phases. Recommended Role suggests which agent role is best suited. Protocol and Role columns are filled based on confirmed Phase WAIT Options.
+**How to fill**: For each phase, mark ✓ (included) or — (skipped). Choose the protocol by reading the Level Selection component — it decides from what the phase holds rather than by the phase's size. Recommended Role suggests which agent role is best suited. Protocol and Role columns are filled based on confirmed Phase WAIT Options.
 
 ---
 
@@ -46,16 +74,18 @@
 *Evaluate whether this project truly needs the Rite of Creation (full lifecycle orchestration) or can be handled by a lower-level wizard.*
 
 **Criteria** — Rite of Creation is needed when ANY of these are true:
-- [ ] Project requires **multiple SDLC phases** (not just one)
-- [ ] Project scope spans **architecture + implementation + delivery**
-- [ ] **At least one phase requires Council-level coordination** (CoW) — if all phases are HW/QW, a single CoW suffices instead of RoC
+- [ ] Reaching the deliverable's consumers needs **work of more than one kind, in an order that matters** — design before build, build before verify, verify before release
+- [ ] The deliverable must pass **at least one phase that is not implementation** — a migration, a cutover, a rollout, monitoring
+- [ ] The sequence needs **exit criteria enforced**, so a later phase cannot start on an unverified earlier one
 
-**Assessment**: [Explain why this project meets/doesn't meet the criteria above]
+**Not needed when**: the work is one deliverable whose release finishes it (a single `/high-wizard`, or `/pixel-wizard` when design-led), or several deliverables closing independently (a single `/council-of-wizards`).
+
+**Assessment**: [Explain why this work meets/doesn't meet the criteria above]
 
 **Decision**: [ ] Proceed with Rite of Creation | [ ] De-escalate to `/council-of-wizards` | [ ] De-escalate to `/high-wizard`
 
-*If de-escalating to Council: scope is actually a single phase — delete this folder, launch `/council-of-wizards` with the decisions already gathered above.*
-*If de-escalating to HW: scope is a single deliverable — delete this folder, launch `/high-wizard` with the decisions already gathered above.*
+*If de-escalating to Council: the work is several deliverables closing independently — delete this folder, launch `/council-of-wizards` with the decisions already gathered above.*
+*If de-escalating to HW: the work is one deliverable whose release finishes it — delete this folder, launch `/high-wizard` with the decisions already gathered above.*
 
 ---
 
@@ -70,11 +100,13 @@
 | Project Setup / Scaffolding | Working repository, CI/CD pipeline, dev environment, boilerplate code | [ ] |
 | Core Development (MVP) | Working MVP with core features implemented | [ ] |
 | Testing & QA | Test suite passing, QA report, critical bugs resolved | [ ] |
-| Deployment & Infrastructure | Deployed to staging/production, monitoring active | [ ] |
-| Launch / Go-Live | Live product, rollback plan tested, user communication sent | [ ] |
-| Post-Launch / Operations | Monitoring dashboard active, feedback loop established, maintenance plan | [ ] |
+| Deployment & Infrastructure | Deployable and observable: pipeline, environments and monitoring in place | [ ] |
+| Launch / Go-Live | Release ready: rollout and rollback plan tested, user communication prepared | [ ] |
+| Post-Launch / Operations | Operable: monitoring live, feedback loop established, maintenance owner named | [ ] |
 
-**How to fill**: Remove rows for phases not included in the Phase Menu. Customize exit deliverables based on the specific project. The Status column is checked during Phase Execution when the phase completes and its deliverables are verified.
+**How to fill**: Remove rows for phases not included in the Phase Menu. Customize exit deliverables based on the specific deliverable. The Status column is checked during Phase Execution when the phase completes and its deliverables are verified.
+
+> **The release act itself is the milestone boundary, not a phase.** Reaching "Launch / Go-Live" means the rollout is prepared; the deploy that makes the work live is either the last step of the work that finished it, or a separate act outside every wizard, depending on whether *done* for this project includes deployed. The Level Selection component states that rule.
 
 ---
 
