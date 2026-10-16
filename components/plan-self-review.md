@@ -2,7 +2,7 @@
 
 Shared self-review pass for the planning wizards. **This is a component, not a standalone skill** — a wizard's "Self-Review + Auto-Fix" step invokes it by reading and following this file.
 
-*Consumed by `/high-wizard` and `/pixel-wizard` (identical generic checklist). Wizards with domain-specific review criteria — `/forge-of-covenant` (milestones/principles/risks), `/rite-of-creation` (phases/exit-criteria) — keep their own checklist.*
+*Consumed by `/high-wizard` and `/pixel-wizard` exactly as written, and by `/council-of-wizards`, which adds two checks this list cannot make because they are properties of the sub-plan set rather than of any one plan. Wizards with domain-specific review criteria — `/forge-of-covenant` (milestones/principles/risks), `/rite-of-creation` (phases/exit-criteria) — keep their own checklist.*
 
 ---
 

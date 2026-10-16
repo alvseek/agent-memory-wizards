@@ -2,7 +2,7 @@
 
 Final consistency check before presenting a plan for approval. **This is a component, not a standalone skill** — a wizard's "Final Review" step invokes it by reading and following this file.
 
-*Consumed by `/high-wizard`, `/forge-of-covenant`, `/rite-of-creation`, `/pixel-wizard`. `/council-of-wizards` presents its sub-plan set differently and keeps its own.*
+*Consumed by `/high-wizard`, `/forge-of-covenant`, `/rite-of-creation`, `/pixel-wizard` and `/council-of-wizards`. What CoW does differently is Step 13, which presents the sub-plan set before this review runs; the review itself is this component's, unchanged.*
 
 ---
 

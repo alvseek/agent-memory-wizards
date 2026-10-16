@@ -1,6 +1,6 @@
 # Council of Wizards Protocol
 
-Orchestrate multiple `/high-wizard` sub-plans into a cohesive feature delivery. Decomposes a feature into requirements, evaluates if multi-plan orchestration is needed, breaks requirements into sub-plans with integration contracts, and tracks parallel execution.
+Orchestrate several `/high-wizard`, `/pixel-wizard` and `/quick-wizard` sub-plans into one cohesive delivery. Decomposes a feature into requirements, decides whether multi-plan orchestration is needed, breaks the requirements into sub-plans with integration contracts, and tracks the batch through to a single release.
 
 ## Arguments
 
@@ -15,11 +15,13 @@ If no arguments provided, ask: "What feature should I create a Council of Wizard
 
 ## Procedure
 
-This is a **Level 2** wizard protocol: it breaks one feature into sub-plans and orchestrates them at Level 1 (`/high-wizard`), Level 1v (`/pixel-wizard`), or Level 0 (`/quick-wizard`). The flow is: WAIT Options → Requirements → Scope Gate → Decompose → Contracts → Dependencies → Execute → Complete.
+This is a **Level 2** wizard protocol: it breaks one feature into sub-plans and orchestrates them at Level 1 (`/high-wizard`), Level 1v (`/pixel-wizard`), or Level 0 (`/quick-wizard`). It is itself launched as a sub-plan when `/rite-of-creation` or `/forge-of-covenant` has a milestone or phase carrying several features. The flow is: WAIT Options → Requirements → Scope Gate → Decompose → Contracts → Dependencies → Execute → QA Handoff → Complete.
 
 Level 2 is decomposition altitude, so that is what you collect decisions about: where the sub-plan boundaries fall, which requirements group together, the integration contracts *between* sub-plans, what can run in parallel, and which protocol fits each one. Disclose the seams rather than the internals — what crosses each boundary, the shape of each contract, which side produces and which consumes. How a sub-plan is built *inside* is not yours: its modules, algorithms, file layout and local trade-offs belong to the `/high-wizard`, `/pixel-wizard`, or `/quick-wizard` it is assigned to, and settling them here commits that child before it has investigated — which it will then re-ask anyway. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
 
-A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a sub-plan at Step 16 or de-escalating to `/high-wizard` at Step 7, read and follow the [Subplan Handoff component]([path-to-agent-memory-wizards]/components/subplan-handoff-write.md) and pass that payload with it. **A path alone is not a handoff.**
+Two decision rounds follow that altitude, in this order: the **requirements round**, which fixes what the feature must deliver and therefore what there is to decompose; then the **decomposition round**, which settles the boundaries, the contracts, the protocol for each sub-plan and the parallel strategy named above. Build one, present it, and wait for [USER-NAME] to clear it before building the next.
+
+A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a sub-plan at Step 17 or de-escalating to `/high-wizard` at Step 7, read and follow the [Subplan Handoff component]([path-to-agent-memory-wizards]/components/subplan-handoff-write.md) and pass that payload with it. **A path alone is not a handoff.**
 
 ### Step 1: Read Template
 
@@ -42,22 +44,22 @@ cp [path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-templat
 
 Fill the [Feature Info]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#feature-info) section (Project, Date, Agent, Feature description)
 
-### Step 5: Investigate Feature + Prepare WAIT Options
+### Step 5: Read Inherited Context + Investigate Feature
 
-Investigate the feature to understand what [USER-NAME] wants delivered. This happens BEFORE any table filling — the agent must align understanding with [USER-NAME] first.
+**First, if anything was settled before you started** — a `/rite-of-creation` or `/forge-of-covenant` parent that launched this council, or a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it in the plan's `## INHERITED CONTEXT` section before investigating anything.
+
+Then investigate the feature to understand what [USER-NAME] wants delivered. This happens BEFORE any table filling — the agent must align understanding with [USER-NAME] first.
 
 **Investigation approach:**
 1. **Understand the feature** — What is being asked? What is the end result?
 2. **Identify all parts** — What distinct pieces need to be built? (data models, APIs, UI, infrastructure, migrations, etc.)
 3. **Research context** — Scan relevant codebase, architecture, and existing patterns
 
-Invoke the `/wait-options-coding` command procedure to guide collecting requirement decisions — run the command; its format rules are not in context.
-
 Be exhaustive — missing a requirement here means a missing sub-plan later.
 
-### Step 6: Present Requirements WAIT Options
+### Step 6: Requirements Round
 
-Present the requirements to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the first round, and the gate that closes each one.
+Present the requirements to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the round, and the gate that closes it.
 Preamble: "Based on my investigation, here's what I think you want"
 
 STOP. Present to [USER-NAME] for review. Do NOT fill any tables or proceed until [USER-NAME] confirms the requirements.
@@ -83,7 +85,7 @@ STOP. Present to [USER-NAME] for review. Do NOT proceed to sub-plan decompositio
 
 **If scope gate fails** (single `/high-wizard` suffices):
 1. Tell [USER-NAME]: "This feature fits a single `/high-wizard`. De-escalating."
-2. Delete the council plan file
+2. Delete the council plan folder
 3. Launch `/high-wizard` with the feature context — passing the handoff payload so the requirements gathered via WAIT Options carry forward
 4. STOP this procedure
 
@@ -93,16 +95,16 @@ Before decomposing into sub-plans, investigate the codebase and feature context 
 
 **Investigation checklist (in order):**
 1. **Grouping strategy** — How should requirements be grouped into sub-plans? (by domain, by layer, by dependency, by team?)
-2. **Protocol choice** — Which sub-plans are complex enough for `/high-wizard` vs simple enough for `/quick-wizard`?
+2. **Protocol choice** — Which sub-plans are complex enough for `/high-wizard`, design-driven enough for `/pixel-wizard`, or simple enough for `/quick-wizard`?
 3. **Integration points** — What data/interfaces flow between potential sub-plans? What contract format fits?
 4. **Parallel strategy** — Which sub-plans can run concurrently? Any hard sequential dependencies?
 5. **Conflicts and constraints** — Are there requirements that must be in the same sub-plan? Cross-cutting concerns?
 
 Invoke the `/wait-options-coding` command procedure to guide collecting decomposition decisions — run the command; its format rules are not in context.
 
-### Step 9: Present Decomposition WAIT Options
+### Step 9: Decomposition Round
 
-Present the decomposition decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure.
+Present the decomposition decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the round, and the gate that closes it.
 Preamble: "Here are the decomposition decisions I need before breaking this into sub-plans"
 
 STOP. Present to [USER-NAME] for review. Do NOT proceed to decomposition until decisions are confirmed.
@@ -116,7 +118,7 @@ Group the confirmed requirements into sub-plans, **informed by the confirmed dec
 **Guidelines:**
 - Each sub-plan groups related requirements that naturally belong together
 - Choose protocol per sub-plan: `/high-wizard` for complex deliverables, `/pixel-wizard` when the deliverable is design-driven and has a visual reference to match, `/quick-wizard` for simple ones
-- Name sub-plan files inside the council folder: `SP-[N]-[subplan-name].md` (e.g., `SP-1-api-endpoints.md`)
+- Name sub-plan files inside the council folder: `SP-[N]-[subplan-name].md` (e.g., `SP-1-api-endpoints.md`). A `/quick-wizard` sub-plan writes no file, which is expected.
 - Assign IDs: SP-1, SP-2, SP-3...
 
 Fill the [Sub-Plans Table]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#sub-plans-table).
@@ -184,19 +186,30 @@ STOP. Present to [USER-NAME] for review. Do NOT proceed until confirmed. If [USE
 
 Create placeholder rows in the [Execution Log]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#execution-log) for each sub-plan from the confirmed Sub-Plans Table.
 
-### Step 15: Final Review
+### Step 15: Self-Review + Auto-Fix
 
-Present the complete council plan to [USER-NAME].
+Read and follow the [Plan Self-Review + Auto-Fix component]([path-to-agent-memory-wizards]/components/plan-self-review.md), then add the two checks it cannot make, because they are properties of the set rather than of any one plan:
 
-STOP. Wait for instruction to begin executing sub-plans.
+- **Every requirement assigned exactly once** — each R appears in exactly one sub-plan's Requirements cell, and no R is missing from the Sub-Plans Table.
+- **No sub-plan deserves its own decomposition** — a sub-plan that would need a council of its own means the boundary was drawn wrong, not that it needs a bigger protocol. Raise it as a boundary change.
 
-### Step 16: Execute Sub-Plans
+If issues are found, auto-fix consistency issues directly in the plan file. For an issue that requires a NEW decision, STOP and present to [USER-NAME] by invoking the `/wait-options-coding` command procedure before continuing.
+
+**Report**: Briefly list any auto-fixes made. If no issues found, proceed silently to Step 16.
+
+### Step 16: Final Review
+
+Read and follow the [Plan Final Review component]([path-to-agent-memory-wizards]/components/plan-final-review.md).
+
+STOP. Wait for [USER-NAME]'s instruction to begin executing sub-plans.
+
+### Step 17: Execute Sub-Plans
 
 After [USER-NAME] instructs to start, execute sub-plans following the dependency graph order.
 
 **For each sub-plan:**
-1. Check dependency graph — are all prerequisite sub-plans DONE?
-2. If prerequisites met, launch the sub-plan using its designated protocol (`/high-wizard`, `/pixel-wizard`, or `/quick-wizard`) and **pass the handoff payload** with it. **Important**: The sub-plan's plan file must also be created at the path specified in the Sub-Plans Table (inside the council folder), overriding the protocol's default `plans/` location.
+1. Check dependency graph — are all prerequisite sub-plans DONE? The Execution Log is the record of that, not the Sub-Plans Table.
+2. If prerequisites met, launch the sub-plan using its designated protocol (`/high-wizard`, `/pixel-wizard`, or `/quick-wizard`) and **pass the handoff payload** with it. **Important**: where the sub-plan writes a plan file, name its path in the handoff so it lands inside the council folder, overriding the protocol's default `plans/` location. A `/quick-wizard` sub-plan writes no file, so record where its plan lives in the Execution Log Notes.
 3. Update the Execution Log: status → IN PROGRESS, record start date
 4. After sub-plan completes, update: status → DONE, record completion date
 5. If sub-plan is blocked, update: status → BLOCKED, record reason in Notes
@@ -209,14 +222,16 @@ After [USER-NAME] instructs to start, execute sub-plans following the dependency
 - Verify integration contracts are satisfied before starting dependent sub-plans
 - Check the "Verified" column in the Integration Contracts table
 
-### Step 17: Feature Completion
+### Step 18: Feature Completion + QA Handoff
 
 After all sub-plans are DONE:
-1. Run through the [Feature Completion Checklist]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#feature-completion-checklist)
-2. Verify all integration contracts (check "Verified" column)
-3. Present completion summary to [USER-NAME]
 
-### Step 18: Move Council Folder to Completed
+1. Run through the [Feature Completion Checklist]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#feature-completion-checklist), including its batch-release line: sub-plans that shipped together are released **once**.
+2. Verify all integration contracts (check the "Verified" column), and settle the `Cross-plan integration` line of the plan's `## QA HANDOFF` section: either the boundary was exercised, naming what exercised it, or it was not, naming why.
+3. Fill the [QA Handoff]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#qa-handoff) section. Each sub-plan owns the checklist for its own change; this section owns the batch, which no sub-plan can see.
+4. Present the completion summary to [USER-NAME]: what shipped, which sub-plan checklists exist, that the batch is **not runtime-verified** with the next action that verifies it, and the single-release advice.
+
+### Step 19: Move Council Folder to Completed
 
 After [USER-NAME] confirms feature is complete, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) — move the entire council folder `[council-folder]` (core plan + sub-plans + contracts).
 

@@ -1,8 +1,8 @@
 # Inherited Context — Read Side (plan component)
 
-What a plan consumes when some of its decisions were made before it existed. **This is a component, not a standalone skill** — a leaf wizard follows it before investigating anything.
+What a plan consumes when some of its decisions were made before it existed. **This is a component, not a standalone skill** — a wizard follows it before investigating anything.
 
-*Consumed by `/high-wizard`, `/quick-wizard` and `/pixel-wizard` — the three leaf wizards, each reading it in its own procedure before investigation begins. The parent's half of the handoff contract is [subplan-handoff-write.md](subplan-handoff-write.md).*
+*Consumed by every wizard that can receive a handoff — `/high-wizard`, `/quick-wizard`, `/pixel-wizard`, and `/council-of-wizards`, which a `/rite-of-creation` or `/forge-of-covenant` parent launches as a sub-plan. Each reads it in its own procedure before investigation begins. Nothing launches the two top orchestrators themselves, so they have no inherited context to read. The parent's half of the handoff contract is [subplan-handoff-write.md](subplan-handoff-write.md).*
 
 ---
 

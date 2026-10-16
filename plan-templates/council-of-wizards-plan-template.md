@@ -11,6 +11,34 @@
 
 ---
 
+## **INHERITED CONTEXT**
+*Filled at investigation step 0 with whatever was settled before this plan existed. The two sources are recorded separately and never merged — write "None" under a part that does not apply.*
+*These decisions are **not yours to reopen**. If one looks wrong, STOP and surface it to [USER-NAME] — do not silently re-decide it here or in Confirmed Decisions below.*
+
+### From the Parent Plan
+- **Parent plan**: [path to the parent `core-plan.md` in the rite or covenant folder, or "None — not a sub-plan"]
+- **Assigned scope**: [the milestone or phase this council owns, and what it must deliver]
+
+| # | Inherited decision | Chosen | Parent's reason | Status |
+|---|--------------------|--------|-----------------|--------|
+| 1 | [Decision topic] | [Chosen option] | [Reason, verbatim from the parent] | Settled / My call |
+
+- **Integration contracts**: [`contracts/*.yaml` paths this council must honor, and whether it produces or consumes each — or "None"]
+- **Pushed-down open items**: [decisions the parent deliberately left to this council — or "None"]
+
+### From Pre-Planning Discussion
+- **Discussion**: ["Pre-planning discussion with [USER-NAME], YYYY-MM-DD", or "None — no pre-planning discussion"]
+- **Agreed scope**: [what the discussion established this work covers]
+
+| # | Settled decision | Chosen | His reason | Status |
+|---|------------------|--------|------------|--------|
+| 1 | [Decision topic] | [Chosen option] | [Reason, verbatim from the discussion] | Settled / My call |
+
+- **Considered and rejected**: [option → why it lost — or "None"]
+- **Left open**: [decisions the discussion deliberately did not make — or "None"]
+
+---
+
 ## **REQUIREMENTS BREAKDOWN**
 *Filled AFTER [USER-NAME] confirms the WAIT Options (Step 6). This table is the formal record of confirmed requirements that informs the scope gate and sub-plan decomposition.*
 
@@ -51,13 +79,15 @@
 ## **SUB-PLANS TABLE**
 *Single canonical table — all other sections reference sub-plans by their ID. Do NOT duplicate this table elsewhere.*
 
-| ID | Sub-Plan Name | Description | Requirements | Protocol | Plan File | Status |
-|----|--------------|-------------|--------------|----------|-----------|--------|
-| SP-1 | [Name] | [What this sub-plan delivers] | R1, R2 | HW / PW / QW | `SP-1-[name].md` | NOT STARTED |
-| SP-2 | [Name] | [What this sub-plan delivers] | R3 | HW / PW / QW | `SP-2-[name].md` | NOT STARTED |
-| SP-3 | [Name] | [What this sub-plan delivers] | R4, R5 | HW / PW / QW | `SP-3-[name].md` | NOT STARTED |
+| ID | Sub-Plan Name | Description | Requirements | Protocol | Plan File |
+|----|--------------|-------------|--------------|----------|-----------|
+| SP-1 | [Name] | [What this sub-plan delivers] | R1, R2 | HW / PW / QW | `SP-1-[name].md` |
+| SP-2 | [Name] | [What this sub-plan delivers] | R3 | HW / PW / QW | `SP-2-[name].md` |
+| SP-3 | [Name] | [What this sub-plan delivers] | R4, R5 | HW / PW / QW | `SP-3-[name].md` |
 
-**How to fill**: Each sub-plan groups related requirements into a coherent deliverable. Protocol column indicates `/high-wizard` (complex), `/pixel-wizard` (design-driven, with a visual reference to match), or `/quick-wizard` (simple). Plan File links to the actual sub-plan file once created. Status tracks: NOT STARTED → IN PROGRESS → DONE.
+**How to fill**: Each sub-plan groups related requirements into a coherent deliverable. Protocol column indicates `/high-wizard` (complex), `/pixel-wizard` (design-driven, with a visual reference to match), or `/quick-wizard` (simple). `Plan File` links to the sub-plan's file inside this folder once created; a `/quick-wizard` sub-plan writes no file, so record where its plan lives in the Execution Log Notes instead.
+
+**Status lives in the Execution Log and nowhere else.** A status column here would be a second owner for one value, and it would go stale, because the procedure only ever advances a sub-plan in the log.
 
 **Each sub-plan launch carries a handoff payload** — the decisions, contracts, and scope that bind it. See the Subplan Handoff component; a path alone is not a handoff.
 
@@ -97,10 +127,10 @@ graph LR
 ---
 
 ## **EXECUTION LOG**
-*Track progress of each sub-plan. This is the single source of truth for master-level progress. Each sub-plan's own plan file has its own detailed execution log.*
+*Track progress of each sub-plan. This is the single source of truth for master-level progress **and for every sub-plan's status** — the Sub-Plans Table deliberately carries no status column. Each sub-plan's own plan file has its own detailed execution log.*
 
 **Execution Protocol for AI**:
-I have to use this document as my **ONLY** source of truth to track which sub-plans are done and which are next. For each sub-plan, I launch `/high-wizard` or `/quick-wizard` as specified in the Sub-Plans Table, then update this log. Sub-plans can be executed in parallel if the dependency graph allows.
+I have to use this document as my **ONLY** source of truth to track which sub-plans are done and which are next. For each sub-plan, I launch `/high-wizard`, `/pixel-wizard` or `/quick-wizard` as specified in the Sub-Plans Table, then update this log. Sub-plans can be executed in parallel if the dependency graph allows.
 
 | Sub-Plan | Status | Started | Completed | Agent/Session | Notes |
 |----------|--------|---------|-----------|---------------|-------|
@@ -112,14 +142,25 @@ I have to use this document as my **ONLY** source of truth to track which sub-pl
 
 ---
 
+## **QA HANDOFF**
+*Filled at Step 18. This council is **not** runtime-verified — this section records the plan for that verification, which happens in a QA session with the stack up. Each sub-plan owns the checklist for its own change; this section owns the batch, which no sub-plan can see.*
+
+- **Sub-plan checklists**: [`qa/checklists/{feature}.md` for each sub-plan that produced one, with the skip and its reason for each that did not]
+- **Cross-plan integration**: [exercised — what ran it (an `/integration-test` run, or a named test) | NOT covered — why]
+- **Runtime verification**: **NOT DONE.** Next action: [run each sub-plan's checklist with the stack up — `/run-qa-test --checklist <path>` per checklist]
+- **Release**: [the sub-plans this batch releases together — one deployment for the batch, not one per sub-plan]
+
+---
+
 ## **FEATURE COMPLETION CHECKLIST**
 *Final verification before marking the feature complete.*
 
 - [ ] All sub-plans have status DONE in Execution Log
 - [ ] All integration contracts verified (Verified column checked)
-- [ ] Cross-plan integration tested end-to-end
+- [ ] Cross-plan integration settled, and the `## QA HANDOFF` section filled: the sub-plan checklists listed, and the batch marked **not runtime-verified** with its next action
 - [ ] No BLOCKED sub-plans remaining
 - [ ] Documentation updated (if applicable)
+- [ ] The sub-plans that shipped together are released **once** — batch them into a single deployment rather than deploying per sub-plan
 - [ ] [USER-NAME] confirms feature is complete
 
 ---
