@@ -54,9 +54,11 @@
 *Evaluate whether this feature truly needs multi-plan orchestration (council) or can be handled by a single `/high-wizard`.*
 
 **Criteria** — council is needed when ANY of these are true:
-- [ ] Feature has **independently shippable sub-deliverables** that build on each other
-- [ ] Feature requires **integration contracts** between parts (one plan produces what another consumes)
-- [ ] Scope is **too large for a single `/high-wizard`** to cover without losing detail
+- [ ] The work holds **several deliverables, released together**, rather than one
+- [ ] It requires **integration contracts** between parts (one plan produces what another consumes)
+- [ ] The scope is **too large for a single `/high-wizard`** to cover without losing detail
+
+**Not needed when**: the work is one deliverable whose release finishes it (a single `/high-wizard`), or its parts must pass phases that gate each other (that is `/rite-of-creation`).
 
 **Assessment**: [Explain why this feature meets/doesn't meet the criteria above]
 

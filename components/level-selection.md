@@ -25,7 +25,9 @@ Ask what the work holds, and the first line that matches is the answer.
 - **One deliverable, and releasing it finishes the work** → `/high-wizard`, or `/pixel-wizard` when the deliverable is design-led.
 - **One deliverable, and reaching its consumers needs phases that gate each other** → `/rite-of-creation`.
 - **Several deliverables that close independently** → `/council-of-wizards`.
-- **Several groups, where one group must finish before the next begins** → `/rite-of-creation`, with `/council-of-wizards` or `/high-wizard` carrying each group.
+- **Several kinds of work that must be done in order** — design, then build, then verify, then release → `/rite-of-creation`, with `/council-of-wizards` or `/high-wizard` carrying each phase.
+
+Deliverables that must be done in a particular order are still deliverables: `/council-of-wizards` owns that with its dependency graph. The difference is between *different things* and *different kinds of work*, and only the second is `/rite-of-creation`.
 
 ## Two floors
 
