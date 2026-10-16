@@ -85,7 +85,7 @@
 | SP-2 | [Name] | [What this sub-plan delivers] | R3 | HW / PW / QW | `SP-2-[name].md` |
 | SP-3 | [Name] | [What this sub-plan delivers] | R4, R5 | HW / PW / QW | `SP-3-[name].md` |
 
-**How to fill**: Each sub-plan groups related requirements into a coherent deliverable. Protocol column indicates `/high-wizard` (complex), `/pixel-wizard` (design-driven, with a visual reference to match), or `/quick-wizard` (simple). `Plan File` links to the sub-plan's file inside this folder once created; a `/quick-wizard` sub-plan writes no file, so record where its plan lives in the Execution Log Notes instead.
+**How to fill**: Each sub-plan groups related requirements into a coherent deliverable. Protocol column indicates `/high-wizard` (complex), `/pixel-wizard` (design-driven, with a visual reference to match), or `/quick-wizard` (simple). `Plan File` links to the sub-plan's file inside this folder once created. A `/quick-wizard` sub-plan keeps its plan in plan mode or in conversation rather than on disk, so its finished plan is written to that path once approved.
 
 **Status lives in the Execution Log and nowhere else.** A status column here would be a second owner for one value, and it would go stale, because the procedure only ever advances a sub-plan in the log.
 

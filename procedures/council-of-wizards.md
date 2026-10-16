@@ -118,7 +118,7 @@ Group the confirmed requirements into sub-plans, **informed by the confirmed dec
 **Guidelines:**
 - Each sub-plan groups related requirements that naturally belong together
 - Choose protocol per sub-plan: `/high-wizard` for complex deliverables, `/pixel-wizard` when the deliverable is design-driven and has a visual reference to match, `/quick-wizard` for simple ones
-- Name sub-plan files inside the council folder: `SP-[N]-[subplan-name].md` (e.g., `SP-1-api-endpoints.md`). A `/quick-wizard` sub-plan writes no file, which is expected.
+- Name sub-plan files inside the council folder: `SP-[N]-[subplan-name].md` (e.g., `SP-1-api-endpoints.md`). A `/quick-wizard` sub-plan keeps its plan in plan mode or in conversation, so it is written to that path once approved, at Step 17.
 - Assign IDs: SP-1, SP-2, SP-3...
 
 Fill the [Sub-Plans Table]([path-to-agent-memory-wizards]/plan-templates/council-of-wizards-plan-template.md#sub-plans-table).
@@ -209,7 +209,7 @@ After [USER-NAME] instructs to start, execute sub-plans following the dependency
 
 **For each sub-plan:**
 1. Check dependency graph — are all prerequisite sub-plans DONE? The Execution Log is the record of that, not the Sub-Plans Table.
-2. If prerequisites met, launch the sub-plan using its designated protocol (`/high-wizard`, `/pixel-wizard`, or `/quick-wizard`) and **pass the handoff payload** with it. **Important**: where the sub-plan writes a plan file, name its path in the handoff so it lands inside the council folder, overriding the protocol's default `plans/` location. A `/quick-wizard` sub-plan writes no file, so record where its plan lives in the Execution Log Notes.
+2. If prerequisites met, launch the sub-plan using its designated protocol (`/high-wizard`, `/pixel-wizard`, or `/quick-wizard`) and **pass the handoff payload** with it. **Important**: name the sub-plan's plan-file path in the handoff so it lands inside the council folder, overriding the protocol's default `plans/` location. A `/quick-wizard` sub-plan keeps its plan in plan mode or in conversation rather than on disk, so write its finished plan to that path yourself once it has been approved.
 3. Update the Execution Log: status → IN PROGRESS, record start date
 4. After sub-plan completes, update: status → DONE, record completion date
 5. If sub-plan is blocked, update: status → BLOCKED, record reason in Notes
