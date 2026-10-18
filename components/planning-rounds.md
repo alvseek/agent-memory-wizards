@@ -2,7 +2,7 @@
 
 The rounds every implementation wizard presents, in order — the frame, scope, product flow, technical core, then integration points. **This is a component, not a standalone skill** — a wizard's decision step reads and follows it after the Planning Decision discipline.
 
-*Referenced once each by `/quick-wizard`, `/high-wizard` and `/pixel-wizard`. Rounds are named, not numbered, so a wizard that adds its own round — pixel's visual target, which runs after the product-flow round — states it separately without forcing a renumber. Not nested inside another component; the overlay compiler inlines in a single pass.*
+*Consumed by `/quick-wizard`, `/high-wizard` and `/pixel-wizard`, once each. Rounds are named, not numbered, so a wizard that adds its own round — pixel's visual target, which runs after the product-flow round — states it separately without forcing a renumber. Not nested inside another component; the overlay compiler inlines in a single pass.*
 
 ---
 

@@ -17,7 +17,7 @@ If no arguments provided, ask: "What feature or task should I create a Quick Wiz
 
 This is a **Level 0** wizard protocol: it owns the **change**, one small change below the deliverable. It is a leaf — it never orchestrates sub-plans — and it may itself be launched as a phase by `/rite-of-creation` or a sub-plan by `/council-of-wizards`. It is never a milestone, because it sits below the release boundary.
 
-Level 0 is the concrete change, so that is what you collect decisions about — Step 3 names the categories, the condition each one runs under, and the order they are asked in; at this size most will not run at all. Implementation nouns — entrypoints, core logic, execution touchpoints — are the right vocabulary to disclose in, because they are what this altitude is made of. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — Step 3 is where that is decided.) Nothing gets pushed down; a decision that feels too large to settle here is not something to hand off, it is the scope gate in Step 2 telling you to escalate to `/high-wizard`.
+Level 0 is the concrete change, so that is what you collect decisions about — Step 3 presents the rounds `planning-rounds.md` declares, each under the condition it runs; at this size most will not run at all. Implementation nouns — entrypoints, core logic, execution touchpoints — are the right vocabulary to disclose in, because they are what this altitude is made of. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — Step 3 is where that is decided.) Nothing gets pushed down; a decision that feels too large to settle here is not something to hand off, it is the scope gate in Step 2 telling you to escalate to `/high-wizard`.
 
 *IMPORTANT: This procedure structurally enforces UUID f3a8b2c1 (VERIFY FIRST) - the agent MUST collect and confirm decisions BEFORE executing. Jumping directly into implementation is prohibited.*
 
@@ -47,7 +47,7 @@ After investigation, assess whether this task is suitable for Quick Wizard (dire
 
 ### Step 3: Present Decisions — One Round per Category
 
-Decisions are not presented in one block. Each category from this procedure's opening gets its own round, in the order declared there, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
+Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
 
 Present the [planning rounds]([path-to-agent-memory-wizards]/components/planning-rounds.md).
 
@@ -186,7 +186,7 @@ Use this structure when writing the plan in plan mode (or presenting in conversa
 ## Quality Review
 *Filled by Step 7 (delegated to `/analyze-code-quality` in embedded mode). **Static** review — answers "is the code clean?".*
 
-- **Scope**: [Files reviewed — reconciled against `git diff --name-only`]
+- **Scope**: [Files reviewed — reconciled against `git status --short`, which also sees a newly created file]
 - **Quality Standard**: [found / not found — dimensions applied]
 - **Findings**: [Issues found, or "No findings — implementation meets quality dimensions"]
 - **Fixed**: [What was fixed from approved findings, or "N/A"]

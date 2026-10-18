@@ -42,7 +42,7 @@ cp [path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.
 
 ### Step 4: Fill Vision
 
-Fill the [Project Vision]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#project-vision) section (Project, Date, Agent Role, Vision, Target Users, Success Feeling). When a covenant launched this rite, the vision, the audience and the target scope all arrive in the inherited context you read at Step 5, so record them from there rather than asking again.
+Fill the [Vision]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#vision) section (Project, Date, Agent Role, Vision, Target Users, Success Feeling). When a covenant launched this rite, the vision, the audience and the target scope all arrive in the inherited context you read at Step 5, so record them from there rather than asking again.
 
 ### Step 5: Read Inherited Context + Investigate Project + Prepare WAIT Options Round 1
 
@@ -66,11 +66,11 @@ Preamble: "Based on my investigation, here are the project decisions I need befo
 
 STOP. Present to [USER-NAME] for review. Do NOT fill any tables or proceed until [USER-NAME] confirms the project decisions.
 
-### Step 7: Fill Project Decisions + Phase Menu + Scope Gate
+### Step 7: Fill Confirmed Decisions + Phase Menu + Scope Gate
 
 After [USER-NAME] confirms the WAIT Options Round 1, fill the formal plan sections:
 
-1. **Fill Project Decisions table** — Record all confirmed decisions (with any changes [USER-NAME] made) in the [Project Decisions]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#project-decisions) section. Include the meaningful reasons — this IS the analysis record.
+1. **Fill the Confirmed Decisions table** — Record every decision [USER-NAME] confirmed, with any changes he made, in the [Confirmed Decisions]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#confirmed-decisions) section. Include the reasons — this IS the analysis record.
 
 2. **Fill Phase Menu** — Based on the confirmed project decisions, propose which SDLC phases apply. For each of the 9 phases:
    - Mark ✓ (included) or — (skipped) with rationale
@@ -200,10 +200,10 @@ After [USER-NAME] instructs to start, execute phases following the dependency gr
 - Verify exit criteria are satisfied before starting dependent phases
 - The Phase Exit Criteria table is the gate
 
-### Step 16: Project Completion
+### Step 16: Completion
 
 After all phases are DONE:
-1. Run through the [Project Completion Checklist]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#project-completion-checklist)
+1. Run through the [Completion Checklist]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation-plan-template.md#completion-checklist)
 2. Verify all phase exit criteria (Status column checked)
 3. Present completion summary to [USER-NAME]
 

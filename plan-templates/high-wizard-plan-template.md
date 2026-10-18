@@ -290,7 +290,7 @@ I have to use this document as my **ONLY** source of truth to execute and track 
 ## **QUALITY REVIEW**
 *Filled by procedure Step 16 (delegated to `/analyze-code-quality` in embedded mode) after all execution phases are complete. **Static** review — answers "is the code clean?".*
 
-- **Scope**: [Files reviewed — from Execution Log, reconciled against `git diff --name-only`]
+- **Scope**: [Files reviewed — from Execution Log, reconciled against `git status --short`, which also sees a newly created file]
 - **Quality Standard**: [quality-standard.md found / not found — dimensions applied]
 - **Findings**: [Issues found, or "No findings — implementation meets quality dimensions"]
 - **Fixed**: [What was fixed from approved findings, or "N/A"]

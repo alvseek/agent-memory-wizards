@@ -168,7 +168,7 @@ Present a brief report to [USER-NAME]:
 
 ## Templates
 
-*The rig's file shapes. The [Build R/I/A/O Mechanisms component]([path-to-agent-memory-wizards]/components/build-riao-mechanisms.md) says what to build per phase; these say what the file looks like.*
+*The rig's file shapes. The Build R/I/A/O Mechanisms component, inlined where it is invoked, says what to build per phase; these say what the file looks like.*
 
 - **The spine**: [qa-readme-template.md]([path-to-agent-memory-wizards]/templates/qa-readme-template.md) — the `qa/README.md` filled across all four phases.
 

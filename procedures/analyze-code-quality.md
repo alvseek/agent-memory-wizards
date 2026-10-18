@@ -22,7 +22,7 @@ If no arguments provided, ask: "What code should I review? (file paths, director
 
 ### Embedded invocation (wizard-delegated)
 
-When called from `/high-wizard` Step 16, `/quick-wizard` Step 7, or `/pixel-wizard` Step 18, this procedure runs in **embedded mode** with two caller-passed inputs:
+When called from `/high-wizard`, `/quick-wizard` or `/pixel-wizard` at that wizard's quality-review step, this procedure runs in **embedded mode** with two caller-passed inputs:
 
 - `scope`: list of files from the caller's Execution Log (HW/pixel-wizard) or QW plan execution
 - `embedded_mode=true`: signals to skip standalone working-doc creation and write findings directly into the caller's plan Quality Review section (HW plan template's `## QUALITY REVIEW` heading)
@@ -70,11 +70,11 @@ When called from a wizard, the caller-passed `scope` (from its Execution Log) is
 
 1. **Skip if standalone**: If `embedded_mode` is not set, skip this step entirely. Proceed to Step 4.
 
-2. **Run git diff** to capture actual changed files in the workspace:
+2. **Run `git status --short`** to capture what actually changed in the workspace, tracked and untracked alike:
    ```
-   git diff --name-only
+   git status --short
    ```
-   Capture as `actual_changed`.
+   Capture as `actual_changed`, treating a `??` row as a changed file. `git diff --name-only` is not enough here: it reports nothing for a newly created file, so every new deliverable would arrive as "logged but shows no diff".
 
 3. **Compute discrepancy sets** against the caller-passed scope:
    - `in_diff_not_in_scope = actual_changed - caller_scope` (files changed on disk but not logged)
@@ -176,6 +176,6 @@ Fix all approved items in a single batch. After fixing:
    - **Embedded**: update the **Fixed** field in the caller's plan `## QUALITY REVIEW` section with what was fixed
 2. **Briefly report** what was changed to [USER-NAME]
 
-**Embedded mode return**: After Step 8 completes, control returns to the wizard caller (HW Step 16, QW Step 7, or pixel-wizard Step 18), which then proceeds to its next step (Build QA Checklist).
+**Embedded mode return**: After Step 8 completes, control returns to the wizard caller at its quality-review step, which then proceeds to its next step (Build QA Checklist).
 
 ---

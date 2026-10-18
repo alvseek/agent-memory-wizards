@@ -2,7 +2,7 @@
 
 Shared discipline for turning investigation findings into a decision form [USER-NAME] can actually answer. **This is a component, not a standalone skill** — a planning wizard reads and follows this file before it presents anything.
 
-*Read by every planning protocol at every altitude — `/quick-wizard`, `/high-wizard`, `/pixel-wizard`, `/council-of-wizards`, `/rite-of-creation`, `/forge-of-covenant`. It is deliberately altitude-blind: it never says which decisions are yours. Your own procedure's opening declares that. This file governs what happens to them between the investigation and the page.*
+*Consumed by every planning protocol at every altitude — `/quick-wizard`, `/high-wizard`, `/pixel-wizard`, `/council-of-wizards`, `/rite-of-creation`, `/forge-of-covenant`. It is deliberately altitude-blind: it never says which decisions are yours, and your own procedure's opening declares that. This file governs what happens to them between the investigation and the page.*
 
 ---
 
@@ -34,7 +34,7 @@ The frame is not conditional on there being anything to ask. When the work was s
 
 ## Rounds
 
-Decisions are presented one category at a time, in the order your procedure declares them — that order is its business, not this file's. A round is a **gate**, not a heading: build the block for that one category, present it, and STOP until [USER-NAME] clears it — an answer, a "pass", or a "proceed". Only then build the next.
+Decisions are presented one category at a time, in the order your procedure declares them — for the leaf wizards, the order `planning-rounds.md` gives; for an orchestrator, its own. This file never owns that order. A round is a **gate**, not a heading: build the block for that one category, present it, and STOP until [USER-NAME] clears it — an answer, a "pass", or a "proceed". Only then build the next.
 
 Five rules govern the sequence.
 

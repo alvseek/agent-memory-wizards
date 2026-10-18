@@ -2,7 +2,7 @@
 
 Build the per-feature verification checklist for a change that just shipped — the artifact that answers *"is it actually right?"*, later, by a human, with the stack up.
 
-This is the wizards' **QA Handoff** step (HW 17 / QW 8 / pixel 19), the last thing a sweep does before archiving its plan, and it runs standalone against any change set just as well. Its scope is one artifact: `qa/checklists/{feature}.md`. Fixtures and the integration tests that consume them belong to `/integration-test`; the rig, the runbooks and the playbook belong to `/build-qa-bench`; walking the checklist and recording what happened belongs to `/run-qa-test`.
+This is the wizards' **QA Handoff** step, the last thing a sweep does before archiving its plan, and it runs standalone against any change set just as well. Its scope is one artifact: `qa/checklists/{feature}.md`. Fixtures and the integration tests that consume them belong to `/integration-test`; the rig, the runbooks and the playbook belong to `/build-qa-bench`; walking the checklist and recording what happened belongs to `/run-qa-test`.
 
 > **Canonical definitions live in `/map-qa-instrument`** — the R/I/A/O loop, the 7 artifact categories, the ownership split, and the `documented / tribal / missing` grading. This skill references *up* to it; it does not restate them.
 
@@ -131,7 +131,7 @@ File: `qa/checklists/{feature}.md` → archived to `completed/` on sign-off.
 - **/integration-test** — sibling. Owns fixtures and the integration tests that consume them; those tests are what this checklist's Automated column cites. The two never overlap — a checklist is per-feature and ephemeral, an integration test is per-boundary and evergreen.
 - **/build-qa-bench** — upstream. Builds the rig whose existence this skill's gate reads as the project's opt-in signal.
 - **/run-qa-test** — downstream. Walks the finished checklist (`--checklist`), writes its `## Result`, and offers the archive on sign-off. This skill never writes that section.
-- **/high-wizard · /quick-wizard · /pixel-wizard** — callers. Each delegates here as its **QA Handoff** step (HW 17 / QW 8 / pixel 19), automatically and without prompting, then records the checklist path or the auto-skip reason in the plan's `## QA HANDOFF` section.
+- **/high-wizard · /quick-wizard · /pixel-wizard** — callers. Each delegates here as its **QA Handoff** step, automatically and without prompting, then records the checklist path or the auto-skip reason in the plan's `## QA HANDOFF` section.
 
 ---
 

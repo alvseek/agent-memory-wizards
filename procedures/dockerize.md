@@ -4,7 +4,7 @@ Decide a project's containerization, place the files where they belong, and emit
 
 Scope is **judgment, placement, and emission** — not template lookup. Generators already exist (`docker init`, Nixpacks, Cloud Native Buildpacks) and all of them assume *one stateless web app at the repo root*. This skill exists for the three cases they assume away: **multi-unit repositories**, **services that hold state in a file**, and **services with no port at all**. Everything downstream of those decisions is mechanical.
 
-> **The output is consumed by `/setup-ci-cd`**, which reads the emitted artifacts to build the release pipeline. This skill stops at "the image builds and runs and its data survives recreation." It does not deploy.
+> **The output is meant to be consumed by `/setup-ci-cd`**, which would read the emitted artifacts to build the release pipeline. That procedure does not exist yet and is deferred; until it does, the pipeline is wired by hand from what this skill emits. This skill stops at "the image builds and runs and its data survives recreation." It does not deploy.
 
 > **Stack-agnostic and runner-agnostic by construction.** Detection reads *lockfiles and entrypoints*, never file extensions or a hardcoded language table — a table would need Python, Node, Go, Rust, Java and .NET on day one and would rot by day thirty. Nothing here depends on which assistant executes it.
 

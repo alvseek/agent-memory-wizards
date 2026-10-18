@@ -1,0 +1,49 @@
+%% Wizard composition — which procedure reads which component, in agent-memory-wizards.
+%% Hand-maintained. Update it whenever a component's "Consumed by" line changes.
+%% This is composition, not flow: it answers "does the skill set hang together",
+%% not "what runs in what order". The level ladder lives in components/level-selection.md.
+
+graph LR
+    FOC[forge-of-covenant] --> LS[level-selection]
+    FOC --> PD[planning-decision]
+    FOC --> FR[plan-final-review]
+    FOC --> AR[archive-plan]
+    FOC --> HOW[subplan-handoff-write]
+
+    ROC[rite-of-creation] --> LS
+    ROC --> PD
+    ROC --> FR
+    ROC --> AR
+    ROC --> HOW
+    ROC --> HOR[subplan-handoff-read]
+
+    COW[council-of-wizards] --> LS
+    COW --> PD
+    COW --> SR[plan-self-review]
+    COW --> FR
+    COW --> AR
+    COW --> HOW
+    COW --> HOR
+
+    HW[high-wizard] --> PD
+    HW --> PInv[planning-investigation]
+    HW --> PR[planning-rounds]
+    HW --> SR
+    HW --> FR
+    HW --> AR
+    HW --> HOR
+
+    PW[pixel-wizard] --> PD
+    PW --> PR
+    PW --> SR
+    PW --> FR
+    PW --> AR
+    PW --> HOR
+
+    QW[quick-wizard] --> PD
+    QW --> PInv
+    QW --> PR
+    QW --> HOR
+
+    BQB[build-qa-bench] --> RIAO[build-riao-mechanisms]
+    RQT[run-qa-test] --> AR

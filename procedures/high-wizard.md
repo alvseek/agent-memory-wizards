@@ -17,7 +17,7 @@ If no arguments provided, ask: "What feature or task should I create a High Wiza
 
 High Wizard is a **Level 1** wizard protocol: one coherent deliverable, planned in a file. It is a leaf — it never orchestrates sub-plans — and it may itself be launched as a sub-plan by `/council-of-wizards`, `/rite-of-creation`, or `/forge-of-covenant`.
 
-Level 1 is implementation altitude, so that is what you collect decisions about — Step 6 names the categories, the condition each one runs under, and the order they are asked in. Implementation nouns — main function, module entrypoint, execution flow — are the right vocabulary to disclose in, because they are what this altitude is made of. Nothing gets pushed down; there is no lower rung. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — Step 6 is where that is decided.)
+Level 1 is implementation altitude, so that is what you collect decisions about — Step 6 presents the rounds `planning-rounds.md` declares, each under the condition it runs. Implementation nouns — main function, module entrypoint, execution flow — are the right vocabulary to disclose in, because they are what this altitude is made of. Nothing gets pushed down; there is no lower rung. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — Step 6 is where that is decided.)
 
 If a parent launched you, then why this deliverable exists, how it is bounded against its siblings, and which contracts it must honor were settled one level up. Those arrive in the handoff that Step 5 reads before any investigation begins — treat them as given, and do not re-ask them.
 
@@ -55,7 +55,7 @@ Then read and follow the [Planning Investigation component]([path-to-agent-memor
 
 ### Step 6: Present Decisions — One Round per Category
 
-Decisions are not presented in one block. Each category from this procedure's opening gets its own round, in the order declared there, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
+Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
 
 Present the [planning rounds]([path-to-agent-memory-wizards]/components/planning-rounds.md).
 

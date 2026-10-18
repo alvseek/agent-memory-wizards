@@ -1,6 +1,10 @@
 # Build R/I/A/O Mechanisms
 
-The per-phase scaffold recipes for `/build-qa-bench` **Step 5**. Run a recipe when a phase is graded `missing` and its mechanism must be created from scratch. Each recipe is **technology-agnostic** — the shape holds across stacks; the commands are project-specific (stub them with a single `TODO:`).
+The per-phase scaffold recipes for `/build-qa-bench`'s BUILD phase. Run a recipe when a phase is graded `missing` and its mechanism must be created from scratch. Each recipe is **technology-agnostic** — the shape holds across stacks; the commands are project-specific (stub them with a single `TODO:`).
+
+*Consumed by `/build-qa-bench`, which runs one recipe in its BUILD phase for any mechanism graded `missing`. **This is a component, not a standalone skill** — that step reads and follows this file, and the rule below is what makes its body reach the compiled command.*
+
+---
 
 ## Shared discipline (every recipe)
 

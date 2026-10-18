@@ -1,6 +1,6 @@
 # Rite of Creation Plan
 
-## **PROJECT VISION**
+## **VISION**
 - **Project**: [Project Name]
 - **Date**: [YYYY-MM-DD]
 - **Agent Role**: [Agent role, e.g., Software Architect, Full-Stack Engineer]
@@ -15,7 +15,7 @@
 
 ## **INHERITED CONTEXT**
 *Filled at investigation step 0 with whatever was settled before this plan existed. The two sources are recorded separately and never merged — write "None" under a part that does not apply.*
-*These decisions are **not yours to reopen**. If one looks wrong, STOP and surface it to [USER-NAME] — do not silently re-decide it here or in Project Decisions below.*
+*These decisions are **not yours to reopen**. If one looks wrong, STOP and surface it to [USER-NAME] — do not silently re-decide it here or in Confirmed Decisions below.*
 
 ### From the Parent Plan
 - **Parent plan**: [path to the parent `core-plan.md` in the covenant folder, or "None — not a sub-plan"]
@@ -41,7 +41,7 @@
 
 ---
 
-## **PROJECT DECISIONS**
+## **CONFIRMED DECISIONS**
 *These decisions were collected during project investigation (WAIT Options Round 1) and confirmed by [USER-NAME]. The reasons serve as the analysis record for foundational project choices.*
 
 | # | Decision | Chosen | Reason |
@@ -157,7 +157,7 @@ I have to use this document as my **ONLY** source of truth to track which phases
 
 ---
 
-## **PROJECT COMPLETION CHECKLIST**
+## **COMPLETION CHECKLIST**
 *Final verification before marking the project complete.*
 
 - [ ] All included phases have status DONE in Execution Log
