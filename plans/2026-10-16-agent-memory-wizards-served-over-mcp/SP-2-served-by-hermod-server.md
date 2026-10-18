@@ -329,7 +329,7 @@ I have to use this document as my **ONLY** source of truth to execute and track 
 
 - [x] **Step 4.3**: The loopback proof
   - **Implementation Log**: the proof ran against the local database and found two defects that only a second source could expose. `_compose_prompt` loaded the seam from the procedure's **own** source root, so any source without `storage-backends/seam.py` raised `FileNotFoundError` and could not compose at all; the seam now comes from whichever source carries the backend document. And `_inlined` resolved components against the first source with a `components/` directory, so eight wizard prompts were served with no components inlined at all (council-of-wizards was 16,577 bytes served against 37,316 compiled); it now resolves against the procedure's own source first, then the others. The end-to-end fixture was made cwd-independent for the same class of reason.
-  - **Testing Log**: 26 prompts (the overlay's 8 plus 18), 10 resources, **18 of 18** wizard prompts byte-equal to the compiled procedures, and `/content/high-wizard-plan-template` byte-exact. Full suite with `HERMOD_PG_TEST_URL` set: **131 passed, 0 skipped**; ruff clean.
+  - **Testing Log**: 26 prompts (the overlay's 8 plus 18), 10 resources, **18 of 18** wizard prompts byte-equal to the compiled procedures, and `/content/high-wizard-plan-template` byte-exact. Full suite with `HERMOD_PG_TEST_URL` set: **131 passed, 0 skipped**; ruff clean. Re-run independently on **2026-10-19** from a second session, which had to re-author the comparison because the script is in no repository: 18 of 18 byte-equal, 26 prompts, 10 resources, no missing component, no unresolved op.
   - **Success Criteria**: Pass, with one correction: the overlay serves 8 prompts, not 7, so the total is 26 rather than the 25 this plan predicted. The README and the loader test both said "seven of nine" while the overlay carries ten procedures; both counts are now corrected.
   - **Tech Debts**: none outstanding.
   - **Result**: proven on loopback, against the real database, with the served set equal to the installed set.
@@ -348,7 +348,7 @@ I have to use this document as my **ONLY** source of truth to execute and track 
 - **Fixed**: all three, at option A for the two Mediums and option B for the Low.
   - **1.** `build_app` now raises a new `ContentUnavailableError` naming the absent checkout and saying to clone with `--recurse-submodules`. Every test that built a config without a root now names one, and a test pins that the refusal happens rather than trusting it.
   - **2.** `_inlined` carries the `missing` list instead of dropping it, and `missing_components(name)` exposes it per procedure. Two tests cover it: a reference that resolves nowhere is reported (and its label still reads in the prompt), and a second source is composed from its own components. A third asserts no served prompt has any.
-  - **3.** The property that actually broke is now in the suite as the second-source test. The scratch script stays as the full check rather than the only one.
+  - **3.** The property that actually broke is now in the suite as the second-source test. The scratch script stays as the full check rather than the only one, and it is still in no repository, so the next session to want it re-derived it instead of running it (2026-10-19). A committed form of it remains a real gap.
   - **Verified after the fixes**: 135 passed, 0 skipped with the database up; ruff clean; and the loopback proof still reports 26 prompts, 10 resources, 18 of 18 byte-equal and 10 of 10 byte-exact.
 
 ---
