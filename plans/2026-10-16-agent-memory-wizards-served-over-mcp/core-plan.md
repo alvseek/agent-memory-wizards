@@ -144,7 +144,7 @@ I have to use this document as my **ONLY** source of truth to track which sub-pl
 | Sub-Plan | Status | Started | Completed | Agent/Session | Notes |
 |----------|--------|---------|-----------|---------------|-------|
 | SP-1 | DONE | 2026-10-17 | 2026-10-18 | meta | Plan file: `SP-1-cohesion-pass.md`, kept in this folder rather than moved to `plans/completed/` — see the note below. Verdict: cohesive. 7 findings repaired, 4 quality lows fixed |
-| SP-2 | NOT STARTED | — | — | — | — |
+| SP-2 | DONE | 2026-10-18 | 2026-10-18 | meta | Plan file: `SP-2-served-by-hermod-server.md`, kept in this folder for the same reason as SP-1's. 26 prompts, 10 resources, 18/18 byte-equal, 10/10 byte-exact. Two loader defects only a second source could expose, found by the proof and fixed |
 | SP-3 | NOT STARTED | — | — | — | — |
 
 **Status values**: NOT STARTED → IN PROGRESS → DONE → BLOCKED (with reason in Notes)
