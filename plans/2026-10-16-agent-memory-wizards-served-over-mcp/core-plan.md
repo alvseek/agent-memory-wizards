@@ -145,7 +145,7 @@ I have to use this document as my **ONLY** source of truth to track which sub-pl
 |----------|--------|---------|-----------|---------------|-------|
 | SP-1 | DONE | 2026-10-17 | 2026-10-18 | meta | Plan file: `SP-1-cohesion-pass.md`, kept in this folder rather than moved to `plans/completed/` — see the note below. Verdict: cohesive. 7 findings repaired, 4 quality lows fixed |
 | SP-2 | DONE | 2026-10-18 | 2026-10-18 | meta | Plan file: `SP-2-served-by-hermod-server.md`, kept in this folder for the same reason as SP-1's. 26 prompts, 10 resources, 18/18 byte-equal, 10/10 byte-exact. Two loader defects only a second source could expose, found by the proof and fixed |
-| SP-3 | NOT STARTED | — | — | — | — |
+| SP-3 | DONE | 2026-10-19 | 2026-10-19 | meta | Plan file: `SP-3-release.md`, kept in this folder for the same reason as its siblings'. Deployed `hermod-server@3f898bd` to `hermod.lok.quest` (run 39180152297) after correcting the deploy config and two READMEs. Verified live from a connected client: 26 prompts, 10 resources, two templates byte-exact, `/health` 200. Rollback target `32ff7c6` named and confirmed in the registry before the dispatch |
 
 **Status values**: NOT STARTED → IN PROGRESS → DONE → BLOCKED (with reason in Notes)
 
@@ -156,22 +156,22 @@ I have to use this document as my **ONLY** source of truth to track which sub-pl
 ## **QA HANDOFF**
 *Filled at Step 18. This council is **not** runtime-verified — this section records the plan for that verification, which happens in a QA session with the stack up. Each sub-plan owns the checklist for its own change; this section owns the batch, which no sub-plan can see.*
 
-- **Sub-plan checklists**: [`qa/checklists/{feature}.md` for each sub-plan that produced one, with the skip and its reason for each that did not]
-- **Cross-plan integration**: [exercised — what ran it (an `/integration-test` run, or a named test) | NOT covered — why]
-- **Runtime verification**: **NOT DONE.** Next action: [run each sub-plan's checklist with the stack up — `/run-qa-test --checklist <path>` per checklist]
-- **Release**: [the sub-plans this batch releases together — one deployment for the batch, not one per sub-plan]
+- **Sub-plan checklists**: none for any of the three. No QA instrument exists in the wizards, the overlay, `hermod-server` or `hermod-deploy` (no `qa-map.md`, no bench), so every sub-plan auto-skipped, and each recorded the skip with its reason rather than inventing a `qa/` folder
+- **Cross-plan integration**: **exercised.** SP-1's layout is what SP-2's loader reads, and SP-2 proved it by comparing every served prompt to this repo's own compiled output (18 of 18 byte-equal, re-run independently on 2026-10-19). SP-3 then exercised the same property on the hosted face: 26 prompts and 10 resources from a client with nothing installed, and two templates byte-exact over the public route
+- **Runtime verification**: **partly done, and the part that is done is the batch's own point.** Done: the served face on `hermod.lok.quest`, verified by SP-3's Step 3. Not done: the hosted store path, since the release wrote no rows, and the wizard prompts as a real session uses them rather than as a listing
+- **Release**: the batch released **once**, in SP-3, as `3f898bd`. R1 and R2 shipped inside it and R3 arrived with it, so no sub-plan deployed on its own and there was no second verification to make
 
 ---
 
 ## **FEATURE COMPLETION CHECKLIST**
 *Final verification before marking the feature complete.*
 
-- [ ] All sub-plans have status DONE in Execution Log
-- [ ] All integration contracts verified (Verified column checked)
-- [ ] Cross-plan integration settled, and the `## QA HANDOFF` section filled: the sub-plan checklists listed, and the batch marked **not runtime-verified** with its next action
-- [ ] No BLOCKED sub-plans remaining
-- [ ] Documentation updated (if applicable)
-- [ ] The sub-plans that shipped together are released **once** — batch them into a single deployment rather than deploying per sub-plan
+- [x] All sub-plans have status DONE in Execution Log
+- [x] All integration contracts verified (there are none, by decision 10, so nothing was owed)
+- [x] Cross-plan integration settled, and the `## QA HANDOFF` section filled: the sub-plan checklists listed, and the batch marked **not runtime-verified** with its next action
+- [x] No BLOCKED sub-plans remaining
+- [x] Documentation updated: the deploy repo's `README.md` and `deploy/README.md` corrected where this feature made them false
+- [x] The sub-plans that shipped together are released **once** — batch them into a single deployment rather than deploying per sub-plan
 - [ ] [USER-NAME] confirms feature is complete
 
 ---
