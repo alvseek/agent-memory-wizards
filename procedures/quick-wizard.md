@@ -1,15 +1,20 @@
 # Quick Wizard Protocol
 
-Execute lightweight smart planning with decision collection and direct execution — same decision-collection discipline as High Wizard but without a custom plan template file. Uses the IDE's built-in plan mode for structured execution tracking. Includes a scope gate that auto-escalates to /high-wizard when the task is too complex for direct execution.
+Execute lightweight smart planning with decision collection and approval before execution — the same decision discipline as High Wizard, using the inline plan template below. Keep the plan in IDE plan mode or conversation by default, or explicitly save the specification and compact execution log in one file. The scope gate escalates complex work to /high-wizard; saving a small plan does not make it complex.
 
 ## Arguments
 
 `$ARGUMENTS`
 
 - `/quick-wizard [context]` → Create Quick Wizard plan for the given context
+- `/quick-wizard --save [context]` → Save the finished plan before approval and track execution in that file
 - `/quick-wizard` → Will ask for context
 
-If no arguments provided, ask: "What feature or task should I create a Quick Wizard plan for?"
+Interpret a standalone `--save` option separately from the task context; do not treat quoted task text mentioning the flag as a request to save. If context is absent after interpreting the option, ask: "What feature or task should I create a Quick Wizard plan for?"
+
+A **caller-supplied plan-file path** also requests saved mode, without requiring `--save`. If QW belongs to a parent or larger plan, follow that plan's saved-file location, regardless of which planning protocol launched it. Read the parent's plan or handoff to find the assigned location; if it is missing or ambiguous, ask rather than inventing a second location. Use that destination instead of the default `./plans/[YYYY-MM-DD]-[project]-[theme].md`; resolve relative destinations from the working project and honor absolute destinations. Keep the caller's inherited scope, decisions and contracts — a path is not a handoff.
+
+Without `--save` or a caller-supplied destination, retain the existing unsaved flow: no plan file or execution log is required.
 
 ---
 
@@ -29,7 +34,7 @@ Then read and follow the [Planning Investigation component]([path-to-agent-memor
 
 ### Step 2: Scope Gate Assessment
 
-After investigation, assess whether this task is suitable for Quick Wizard (direct execution) or needs to escalate to /high-wizard (file-based planning).
+After investigation, assess whether the task is a small Quick Wizard change or needs High Wizard's more detailed planning. Saved mode alone is not a reason to escalate.
 
 **Escalate to /high-wizard when ANY of these apply:**
 - Task likely spans multiple sessions or risks context compaction
@@ -55,18 +60,22 @@ Do NOT proceed until every round that ran is confirmed.
 
 ### Step 4: Create Execution Plan
 
-Enter plan mode if available. If plan mode is not available, present the plan directly in conversation for [USER-NAME]'s approval.
+In **unsaved mode**, enter plan mode if available; otherwise present the plan in conversation. In **saved mode**, write the plan file at the resolved destination using the same inline template. Create the destination directory if needed, but never overwrite an unrelated existing plan: load an existing destination first, resume only when it clearly belongs to this work, and STOP to ask if ownership or intent is unclear.
 
 Write the execution plan using the [Quick Wizard Plan Content Template](#quick-wizard-plan-content-template) structure:
 - Objective (1-2 sentences)
 - Confirmed decisions table
 - Numbered execution steps with clear actions
 
+For saved mode, also include the template's saved-only Plan State, Specification and Execution Log sections. The specification states required behavior, constraints and exclusions; keep it proportionate to the small change. Start approval as **PENDING**. Prepare a log entry per execution step, without marking any work done.
+
+Write the complete saved plan **before presenting it for approval**. A saved file is a draft, not authorization to execute.
+
 As you write the steps, mark any step that will cross a **real dependency the unit test would have to double** — a database, an HTTP service, a queue, the filesystem. One word is enough: `(crosses: DB)`. Most Quick Wizard changes cross nothing; that is the expected answer, and noticing it costs a glance rather than a decision.
 
 ### Step 5: Get Approval
 
-Present the plan for [USER-NAME]'s approval. STOP. Do NOT execute until [USER-NAME] confirms.
+Present the finished plan for [USER-NAME]'s approval, linking the file in saved mode. STOP. Do NOT execute until [USER-NAME] confirms. In saved mode, record **APPROVED** and the actual confirmation only after it arrives; if approval is absent or unclear, keep it **PENDING**. A substantive plan revision that invalidates approval returns here for confirmation.
 
 **If any step was marked as crossing a boundary**, settle its coverage in the same breath as approval — call `/qa-status` and read its bench and stack lines.
 
@@ -79,7 +88,9 @@ Record the answer in the plan's `## QA Handoff` section under `Integration cover
 
 ### Step 6: Execute
 
-Execute the steps from the plan in order. After each step, briefly report what was done before moving to the next.
+Execute the steps from the plan in order. In unsaved mode, briefly report each step before moving on. In saved mode, follow the plan's **Execution Protocol for AI**: load the full plan at the start and after context compaction, inspect its approval and log, read the next step, implement it, verify it, then update that step's inline log before continuing. Use the saved plan as the only execution tracker, not a second log or TodoWrite.
+
+When resuming a saved plan, inspect the source protocol, approval record and unfinished steps first. An existing file or completed earlier step never bypasses a pending approval or another STOP gate. Preserve recorded results; do not repeat completed work without a reason. Mark a step complete only when its success criteria are met, and record blockers, failed or missing verification, and agreed deferrals honestly.
 
 Each step closes on its own tests: unit tests wherever the step has testable logic, and — where Step 5's gate came back ready and the step was marked as crossing a boundary — an `/integration-test [boundary]` run, which builds the fixtures, writes the test, and runs it.
 
@@ -89,7 +100,7 @@ Each step closes on its own tests: unit tests wherever the step has testable log
 
 After all steps are executed, run **static** code quality review by delegating to `/analyze-code-quality` in embedded mode. Findings are embedded directly into the plan's Quality Review section (created at Step 4 from the Quick Wizard Plan Content Template) — the plan IS the audit trail.
 
-1. **Collect scope**: Identify all files created or modified during execution (from the plan's execution tracking — plan-mode steps or in-conversation tracking). This file list is the **caller-passed scope** for the delegated procedure.
+1. **Collect scope**: Identify all files created or modified during execution (from the saved plan's Execution Log, or plan-mode/in-conversation tracking in unsaved mode). This file list is the **caller-passed scope** for the delegated procedure.
 
 2. **Invoke `/analyze-code-quality`** following the /analyze-code-quality with these inputs:
    - `scope`: the file list collected above
@@ -111,7 +122,7 @@ After Quality Review is resolved, hand this plan off to QA by building its verif
 
 > **This step does not verify anything, and must never claim to.** A wizard sweep is a coding session: the QA stack is almost certainly down, so running the R/I/A/O loop here would mean a cold start plus a full seed restore on every sweep. Runtime verification belongs to a dedicated QA session (`/run-qa-test`). What this step guarantees is that the sweep never ends without a written plan for that verification.
 
-1. **Collect scope**: Identify all files created or modified during execution (from the plan's execution tracking — plan-mode steps or in-conversation tracking). That list, plus this plan itself, is the **caller-passed scope**.
+1. **Collect scope**: Identify all files created or modified during execution (from the saved plan's Execution Log, or plan-mode/in-conversation tracking in unsaved mode). That list, plus this plan itself, is the **caller-passed scope**.
 
 2. **Invoke `/generate-qa-checklist`** with this plan as the scope input.
 
@@ -135,16 +146,26 @@ After all steps are executed and both Quality Review (Step 7) + QA Handoff (Step
 - Any issues encountered
 - Any tech debts or follow-up items
 
+In saved mode, update Quality Review and QA Handoff in the **same plan file**, and link that file in the completion report. If this is part of a larger plan, use its assigned saved-file location, not a second copy. Completion does not authorize archiving.
+
 ---
 
 ## Templates
 
 ### Quick Wizard Plan Content Template
 
-Use this structure when writing the plan in plan mode (or presenting in conversation):
+Use this structure in either mode. Include the marked saved-only sections **only in saved mode**; omit them from an unsaved plan. This inline template remains the source — do not create a separate template or log file.
 
 ```markdown
 # Quick Wizard Plan: [Theme]
+
+<!-- Saved mode only: include this section in the saved plan. -->
+## Plan State
+- **Source Protocol**: `/quick-wizard`
+- **Approval**: PENDING
+- **Confirmation**: [Record the user's actual confirmation only after approval]
+
+To resume: load the source protocol and this entire plan, inspect approval and the Execution Log, and continue with the next unfinished step only when its gates are cleared.
 
 ## Inherited Context
 *Filled at investigation step 0 with whatever was settled before this plan existed — recorded separately by source, never merged. Write "None" under a part that does not apply.*
@@ -165,6 +186,12 @@ Use this structure when writing the plan in plan mode (or presenting in conversa
 ## Objective
 [1-2 sentence description of what we're doing and why]
 
+<!-- Saved mode only: include this section in the saved plan. -->
+## Specification
+- **Required behavior**: [What this change must do]
+- **Constraints**: [Rules and compatibility it must preserve]
+- **Out of scope**: [What this change does not include]
+
 ## Confirmed Decisions
 *Decisions made **by this plan** — both asked-and-confirmed by [USER-NAME] AND written-through (Zone A and B decisions, recorded with their reasoning). Inherited decisions belong above, not here.*
 
@@ -182,6 +209,17 @@ Use this structure when writing the plan in plan mode (or presenting in conversa
 1. **[Step name]**: [What to do] → [How to verify]
 2. **[Step name]**: [What to do] → [How to verify]
 3. **[Step name]**: [What to do] → [How to verify]
+
+<!-- Saved mode only: include this section in the saved plan. -->
+## Execution Log
+**Execution Protocol for AI**: Load this entire plan at the start and after compaction. Check approval and pending STOP gates, then read the next unfinished execution step. Implement in order, verify its success criteria, and update its entry below before moving on. This file is the only execution tracker; do not use TodoWrite or a second log. Record actual results, not intentions.
+
+- [ ] **Step [N]: [Name]**
+  - **Implementation**: [What changed, including files; not started initially]
+  - **Verification / result**: [Checks and actual results; not run initially]
+  - **Blockers / agreed deferrals**: [Unresolved blockers or explicitly agreed deferrals; none initially]
+
+Repeat one entry per execution step. Keep failed or unverified work unfinished. File existence and earlier completed steps do not establish approval.
 
 ## Quality Review
 *Filled by Step 7 (delegated to `/analyze-code-quality` in embedded mode). **Static** review — answers "is the code clean?".*
