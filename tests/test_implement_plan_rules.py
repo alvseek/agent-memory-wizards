@@ -66,4 +66,5 @@ def test_missing_inputs_and_human_gates_stop_implementation(procedure):
     assert "verify the step's success criteria" in procedure
     assert "record failures, missing verification and agreed deferrals honestly" in procedure
     assert "does not select a model, spawn a worker or supervise another agent" in procedure
-    assert "does not authorize archiving without human sign-off" in procedure
+    assert "does not authorize archiving, merging, worktree removal or branch deletion" in procedure
+    assert "without human sign-off" in procedure
