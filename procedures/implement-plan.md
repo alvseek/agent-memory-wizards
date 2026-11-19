@@ -24,8 +24,8 @@ Resolve document and worktree paths from the invoking working directory before s
 
 Let's start implementing now. Follow the **Execution Protocol for AI** from the plan file strictly:
 
-1. **Read the plan file** first — load it fully into your context before doing anything
-2. **Use the plan as the ONLY source of truth** — do NOT use TodoWrite, it lacks the context of what should be done
+1. **Load the context** — read the full plan and any supplied rules, load the plan's originating wizard procedure, and read the parent plan or project instructions the plan depends on. Nothing starts until that context is loaded
+2. **Use the plan as the ONLY source of truth** — it holds each step's detail and the progress log, and a separate summary of the steps loses that detail
 3. **Check the plan reference before each step** — re-read the relevant step from the plan before implementing it
 4. **Execute steps in order** — implement one step at a time, sequentially
 5. **Log each step's completion** — after finishing a step, go back to the plan's implementation log and fill in what was done before moving to the next step

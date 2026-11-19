@@ -88,7 +88,7 @@ Record the answer in the plan's `## QA Handoff` section under `Integration cover
 
 ### Step 6: Execute
 
-Execute the steps from the plan in order. In unsaved mode, briefly report each step before moving on. In saved mode, follow the plan's **Execution Protocol for AI**: load the full plan at the start and after context compaction, inspect its approval and log, read the next step, implement it, verify it, then update that step's inline log before continuing. Use the saved plan as the only execution tracker, not a second log or TodoWrite.
+Execute the steps from the plan in order. In unsaved mode, briefly report each step before moving on. In saved mode, follow the plan's **Execution Protocol for AI**: load the full plan at the start and after context compaction, inspect its approval and log, read the next step, implement it, verify it, then update that step's inline log before continuing. The saved plan is the only execution tracker, because a separate summary of the steps loses the detail they carry.
 
 When resuming a saved plan, inspect the source protocol, approval record and unfinished steps first. An existing file or completed earlier step never bypasses a pending approval or another STOP gate. Preserve recorded results; do not repeat completed work without a reason. Mark a step complete only when its success criteria are met, and record blockers, failed or missing verification, and agreed deferrals honestly.
 
@@ -212,7 +212,7 @@ To resume: load the source protocol and this entire plan, inspect approval and t
 
 <!-- Saved mode only: include this section in the saved plan. -->
 ## Execution Log
-**Execution Protocol for AI**: Load this entire plan at the start and after compaction. Check approval and pending STOP gates, then read the next unfinished execution step. Implement in order, verify its success criteria, and update its entry below before moving on. This file is the only execution tracker; do not use TodoWrite or a second log. Record actual results, not intentions.
+**Execution Protocol for AI**: Load this entire plan at the start and after compaction. Check approval and pending STOP gates, then read the next unfinished execution step. Implement in order, verify its success criteria, and update its entry below before moving on. This file is the only execution tracker; a second log or a summary of the steps loses the detail they carry. Record actual results, not intentions.
 
 - [ ] **Step [N]: [Name]**
   - **Implementation**: [What changed, including files; not started initially]

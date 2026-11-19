@@ -27,8 +27,11 @@ def test_optional_rules_and_explicit_document_selection(procedure):
 
 
 def test_full_plan_and_rules_reads(procedure):
-    assert "**Read the plan file** first" in procedure
-    assert "load it fully into your context" in procedure
+    assert "**Load the context**" in procedure
+    assert "read the full plan and any supplied rules" in procedure
+    assert "plan's originating wizard procedure" in procedure
+    assert "parent plan or project instructions the plan depends on" in procedure
+    assert "Nothing starts until that context is loaded" in procedure
     assert "read this document fully as instructions for you" in procedure
 
 
@@ -37,7 +40,7 @@ def test_rules_extend_execution_without_replacing_selected_plan(procedure):
     assert "override any argument except `--plan`" in procedure
     assert "They may call for direct implementation or delegation" in procedure
     assert "**Use the plan as the ONLY source of truth**" in procedure
-    assert "do NOT use TodoWrite" in procedure
+    assert "a separate summary of the steps loses that detail" in procedure
 
 
 def test_missing_inputs_and_human_gates_stop_implementation(procedure):
