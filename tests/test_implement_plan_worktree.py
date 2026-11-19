@@ -18,63 +18,24 @@ def procedure(request, tmp_path):
     )
 
 
-def test_optional_paired_flags_and_committed_base(procedure):
-    for phrase in (
-        "--worktree",
-        "--branch",
-        "--base",
-        "must be supplied together",
-        "Reject a partial pair or `--base` without the pair",
-        "current `HEAD`",
-        "skip worktree setup",
-        "git rev-parse --verify --end-of-options",
-        "Do not fetch or substitute a default branch",
-    ):
-        assert phrase in procedure
+def test_optional_workspace_inputs_reuse_or_create(procedure):
+    assert "All arguments are optional" in procedure
+    assert "use this worktree if it exists; otherwise create it" in procedure
+    assert "use this branch if it exists; otherwise create it from the current HEAD" in procedure
+    assert "With `--worktree`, use the branch there" in procedure
+    assert "otherwise use it in the current working directory" in procedure
 
 
-def test_original_documents_remain_authoritative(procedure):
-    for phrase in (
-        "before switching",
-        "absolute paths from the invoking working directory",
-        "update only the original plan's execution log, never a checkout copy",
-        "references from the selected implementation workspace",
-        "not from the original plan's directory",
-    ):
-        assert phrase in procedure
+def test_document_paths_resolve_before_workspace_switch(procedure):
+    assert "from the invoking working directory before switching workspace" in procedure
+    assert "keep those document paths for implementation" in procedure
 
 
-def test_creation_checks_collisions_and_pinned_submodules(procedure):
-    for phrase in (
-        "git status --short",
-        "git worktree list --porcelain",
-        "including when it is itself a submodule",
-        "Uncommitted changes are not carried",
-        "no automatic stash, commit or copy",
-        "git check-ref-format --branch",
-        "Refuse an existing destination, existing local branch",
-        "never overwrite, reset or force",
-        'worktree add -b "<new-branch>"',
-        "submodule update --init --recursive",
-        "incomplete initialization or mismatched pins",
-        "Do not automatically copy secrets",
-        "Worktrees do not isolate databases or ports",
-    ):
-        assert phrase in procedure
+def test_no_workspace_inputs_preserve_current_workspace(procedure):
+    assert "Without workspace arguments, keep the current working directory and branch" in procedure
 
 
-def test_resume_and_partial_failure_preserve_the_workspace(procedure):
-    for phrase in (
-        "Record them before further setup",
-        "already prepared by a dispatcher",
-        "For a recorded worktree",
-        "--path-format=absolute --git-common-dir",
-        "git branch --show-current",
-        "do not reset it to the starting commit",
-        "Reuse the verified workspace rather than repeating creation",
-        "STOP before implementation",
-        "never automatically remove the worktree or branch",
-        "A shell-only `cd` does not move the agent session",
-        "branch deletion without human sign-off",
-    ):
-        assert phrase in procedure
+def test_conflicts_stop_without_overwriting(procedure):
+    assert "If an existing worktree conflicts with the requested branch" in procedure
+    assert "STOP and ask [USER-NAME]" in procedure
+    assert "Do not overwrite existing work or force a branch switch" in procedure

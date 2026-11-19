@@ -20,51 +20,27 @@ def procedure(request, tmp_path):
 
 def test_optional_rules_and_explicit_document_selection(procedure):
     assert "$ARGUMENTS" in procedure
-    assert '/implement-plan "<implementation-rules-path>"' in procedure
-    assert '--plan "<approved-plan-path>" --rules "<implementation-rules-path>"' in procedure
-    assert "With no arguments" in procedure
-    assert "No rules document is required" in procedure
-    assert "single positional path identifies the implementation-rules document" in procedure
-    assert "independently or together" in procedure
-    assert "Paths may have any filename" in procedure
-    assert "Do not infer document roles from filenames alone" in procedure
-    assert "Quote paths containing spaces" in procedure
-    assert "resolve relative paths from the working project" in procedure
-    assert "honor absolute paths" in procedure
+    assert '--plan "<plan-path>" --rules "<rules-path>"' in procedure
+    assert "All arguments are optional" in procedure
+    assert "otherwise use the approved plan established in the conversation" in procedure
+    assert "Without this argument, no rules document is required" in procedure
 
 
-def test_full_loads_and_resumption_keep_rules(procedure):
-    assert "Read the full approved plan" in procedure
-    assert "full implementation-rules document in your own context" in procedure
-    assert "Recover any explicitly truncated output" in procedure
-    assert (
-        "After context compaction or session resumption, reload both documents fully" in procedure
-    )
-    assert "Keep the resolved plan and rules paths" in procedure
-    assert "reload the plan alone; do not invent a rules file" in procedure
-    assert "Preserve verified completed work" in procedure
+def test_full_plan_and_rules_reads(procedure):
+    assert "**Read the plan file** first" in procedure
+    assert "load it fully into your context" in procedure
+    assert "read this document fully as instructions for you" in procedure
 
 
-def test_rules_constrain_execution_not_scope_or_progress(procedure):
-    assert "plain Markdown instructions" in procedure
-    assert "optional YAML header" in procedure
-    assert "no parser installation is needed" in procedure
-    assert "Read the prose and any header together" in procedure
-    assert "ONLY source of truth for scope and progress" in procedure
-    assert "do NOT use TodoWrite or track progress in the rules document" in procedure
-    assert "cannot silently replace approved scope" in procedure
-    assert "waive a human STOP or sign-off" in procedure
-    assert "bypass higher-priority instructions" in procedure
-    assert "STOP and ask [USER-NAME] rather than silently choosing one" in procedure
+def test_rules_extend_execution_without_replacing_selected_plan(procedure):
+    assert "Rules may add behavior beyond this procedure" in procedure
+    assert "override any argument except `--plan`" in procedure
+    assert "They may call for direct implementation or delegation" in procedure
+    assert "**Use the plan as the ONLY source of truth**" in procedure
+    assert "do NOT use TodoWrite" in procedure
 
 
 def test_missing_inputs_and_human_gates_stop_implementation(procedure):
-    assert "paths are missing or unreadable" in procedure
-    assert "roles or selections conflict or remain ambiguous" in procedure
-    assert "Do not silently ignore a requested rules document" in procedure
-    assert "does not approve a draft or clear an outstanding human gate" in procedure
-    assert "verify the step's success criteria" in procedure
-    assert "record failures, missing verification and agreed deferrals honestly" in procedure
-    assert "does not select a model, spawn a worker or supervise another agent" in procedure
-    assert "does not authorize archiving, merging, worktree removal or branch deletion" in procedure
-    assert "without human sign-off" in procedure
+    assert "an input is missing, unreadable or ambiguous, STOP and ask [USER-NAME]" in procedure
+    assert "**If blocked or unclear**" in procedure
+    assert "**If there's no blocker or a STOP mark, continue until it's finished**" in procedure
