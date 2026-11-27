@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "dockerize"
+kind = "procedure"
+title = "Dockerize"
+description = "Decide a project's containerization, place the files where they belong, and emit ready-to-use artifacts — a Dockerfile per deployable unit, a .dockerignore beside each, and one Compose file at the units' common ancestor."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Dockerize
 
 Decide a project's containerization, place the files where they belong, and emit ready-to-use artifacts — a `Dockerfile` per deployable unit, a `.dockerignore` beside each, and one Compose file at the units' common ancestor.

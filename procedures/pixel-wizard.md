@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "pixel-wizard"
+kind = "procedure"
+title = "Pixel Wizard Protocol"
+description = "Execute visual design-to-implementation planning with screenshot-based validation — equal to /high-wizard in structure, with three visual additions: (1) auto-screenshot the design source, (2) ensure visual testing framework is set up, (3) iterate implementation against the design visually until match."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Pixel Wizard Protocol
 
 Execute visual design-to-implementation planning with screenshot-based validation — equal to `/high-wizard` in structure, with three visual additions: (1) auto-screenshot the design source, (2) ensure visual testing framework is set up, (3) iterate implementation against the design visually until match.
@@ -79,7 +88,10 @@ Fill the [Project Info]([path-to-agent-memory-wizards]/plan-templates/high-wizar
 
 This is where the thinking happens - NOT in the plan document. Follow the investigation checklist below IN ORDER. Each step from 3-6 produces decision items for the WAIT Options form.
 
-**First, if anything was settled before you started** — whether launched as a sub-plan or handed a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it before investigating anything. *(The Visual Design Gate at Step 2 already checks the handoff for the design reference — this is the full read.)*
+**First, if anything was settled before you started** — whether launched as a sub-plan or handed a design already agreed in conversation: read and follow the Inherited Context component. It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it before investigating anything. *(The Visual Design Gate at Step 2 already checks the handoff for the design reference — this is the full read.)*
+
+@start component id="pixel-wizard.subplan-handoff-read" ref="procedures/components/subplan-handoff-read.md"
+@end component
 
 Invoke the `/wait-options-coding` command procedure to guide collecting decisions — run the command; its format rules are not in context. It governs *how* to present a decision, not which decisions are yours: **this procedure's opening states what Level 1v collects decisions about** — re-read it before building the form.
 
@@ -99,13 +111,19 @@ Invoke the `/wait-options-coding` command procedure to guide collecting decision
 
 ### Step 7: Present Decisions — One Round per Category
 
-Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
+Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The Planning Decision component governs what earns a place in a round and how a round is run — read and follow it before building the first round.
+
+@start component id="pixel-wizard.planning-decision" ref="procedures/components/planning-decision.md"
+@end component
 
 This protocol adds its own round — the visual-target round, which runs after the product-flow round:
 
 **Visual-target round.** *Runs always at this altitude — it is why this protocol was chosen.* The fidelity target (pixel-match or categorical), which source wins when the design reference and the written spec disagree, what captures the running result, and how many iteration rounds are acceptable before stopping. Present by invoking `/wait-options-coding`. **STOP.**
 
-Present the [planning rounds]([path-to-agent-memory-wizards]/components/planning-rounds.md), running the visual-target round after the product-flow round.
+Present the planning rounds, running the visual-target round after the product-flow round.
+
+@start component id="pixel-wizard.planning-rounds" ref="procedures/components/planning-rounds.md"
+@end component
 
 Do NOT write any plan sections until every round that ran is confirmed.
 
@@ -189,11 +207,17 @@ Fill the [Implementation Phases]([path-to-agent-memory-wizards]/plan-templates/h
 
 ### Step 14: Self-Review + Auto-Fix
 
-Read and follow the [Plan Self-Review + Auto-Fix component]([path-to-agent-memory-wizards]/components/plan-self-review.md). If no issues found, proceed silently to Step 15.
+Read and follow the Plan Self-Review + Auto-Fix component. If no issues found, proceed silently to Step 15.
+
+@start component id="pixel-wizard.plan-self-review" ref="procedures/components/plan-self-review.md"
+@end component
 
 ### Step 15: Final Review
 
-Read and follow the [Plan Final Review component]([path-to-agent-memory-wizards]/components/plan-final-review.md).
+Read and follow the Plan Final Review component.
+
+@start component id="pixel-wizard.plan-final-review" ref="procedures/components/plan-final-review.md"
+@end component
 
 ### ⛔ END OF PHASE 2
 
@@ -303,7 +327,10 @@ The delegated procedure will:
 
 ### Step 20: Move Plan to Completed
 
-After all implementation phases are done, logged, and both Quality Review (Step 18) + QA Handoff (Step 19) are resolved, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) — move the plan file `[plan-file].md`.
+After all implementation phases are done, logged, and both Quality Review (Step 18) + QA Handoff (Step 19) are resolved, follow the Archive Plan component — move the plan file `[plan-file].md`.
+
+@start component id="pixel-wizard.archive-plan" ref="procedures/components/archive-plan.md"
+@end component
 
 ### Step 21: Completion Report
 

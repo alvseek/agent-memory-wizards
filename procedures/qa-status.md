@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "qa-status"
+kind = "procedure"
+title = "QA Status"
+description = "Report where QA stands on this project right now — what is built, what is running, and what has been written but not yet proven."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # QA Status
 
 Report where QA stands on this project right now — what is built, what is running, and what has been written but not yet proven. It answers questions; it never decides anything and it never blocks.

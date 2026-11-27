@@ -1,10 +1,11 @@
-# Archive Plan — Move to Completed (plan component)
-
-Move a finished artifact into its `completed/` archive. **This is a component, not a standalone skill** — a caller's "Move to Completed" / "archive on sign-off" step invokes it by reading and following this file. The caller supplies the **item** (a `.md` file or a folder) and, optionally, a **destination root**.
-
-*Consumed by `/high-wizard`, `/pixel-wizard` (single plan file), `/council-of-wizards`, `/forge-of-covenant`, `/rite-of-creation` (whole plan folder), and `/run-qa-test` (a signed-off QA checklist).*
-
----
++++
+format_version = 2
+id = "archive-plan"
+kind = "component"
+title = "Archive Plan — Move to Completed (plan component)"
+description = "Move a finished artifact into its `completed/` archive. **This is a component, not a standalone skill** — a caller's \"Move to Completed\" / \"archive on sign-off\" step invokes it by reading and following this file. The caller supplies the **item** (a `.md` file or a folder) and, optionally, a **destination root**."
+# *Consumed by `/high-wizard`, `/pixel-wizard` (single plan file), `/council-of-wizards`, `/forge-of-covenant`, `/rite-of-creation` (whole plan folder), and `/run-qa-test` (a signed-off QA checklist).*
++++
 
 **Destination root** — defaults to `./plans/completed` when the caller doesn't name one.
 

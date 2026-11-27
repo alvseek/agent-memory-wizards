@@ -32,7 +32,7 @@
 
 ### From Pre-Planning Discussion
 - **Discussion**: the design conversation that produced this council, 2026-10-16, and the council's own requirements round
-- **Agreed scope**: the level model is settled and recorded in [level-selection.md](../../../components/level-selection.md) — five units (milestone, phase, sub-plan, deliverable, change), the test that picks a level from what the work holds, two floors, and where the release act sits. It is the standard this plan audits the repo against, not a question to reopen.
+- **Agreed scope**: the level model is settled and recorded in [level-selection.md](../../../procedures/components/level-selection.md) — five units (milestone, phase, sub-plan, deliverable, change), the test that picks a level from what the work holds, two floors, and where the release act sits. It is the standard this plan audits the repo against, not a question to reopen.
 
 | # | Settled decision | Chosen | His reason | Status |
 |---|------------------|--------|------------|--------|
@@ -50,7 +50,7 @@ Judge whether the wizard set is cohesive, reading every procedure and component 
 
 ### **Related Documents**
 - [core-plan.md](core-plan.md) - the council that owns this work, and the source of the inherited decisions above
-- [level-selection.md](../../../components/level-selection.md) - the level model this plan audits the repo against
+- [level-selection.md](../../../procedures/components/level-selection.md) - the level model this plan audits the repo against
 - [README.md](../../../README.md) - what this repo claims to be, which the verdict either supports or qualifies
 
 ### **SUCCESS CRITERIA**

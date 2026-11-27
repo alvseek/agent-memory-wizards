@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "generate-standard"
+kind = "procedure"
+title = "Generate Quality Standard"
+description = "Generate a quality-standard.md by copying the template into a project, investigating the codebase for conventions, and filling each of the 9 quality dimensions from code."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Generate Quality Standard
 
 Generate a **quality-standard.md** by copying the template into a project, investigating the codebase for conventions, and filling each of the 9 quality dimensions from code. The resulting file is used by Dimension 8 of the [Code Quality Analysis Template]([path-to-agent-memory-wizards]/plan-templates/code-quality-analysis-template.md) and discovered automatically by wizard protocols and `/analyze-code-quality`.

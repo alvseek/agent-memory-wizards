@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "map-qa-instrument"
+kind = "procedure"
+title = "Map QA Instrument"
+description = "Read-only audit of a project's QA instrument."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Map QA Instrument
 
 Read-only audit of a project's QA instrument. Scans the **whole project** for existing R/I/A/O materials + the 7 QA artifact categories, grades each on **discoverability**, checks that the `qa/README.md` R/I/A/O index still resolves, and writes a set of map docs that link to what already exists in-place (or record "not found").

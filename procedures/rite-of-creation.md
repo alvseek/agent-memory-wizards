@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "rite-of-creation"
+kind = "procedure"
+title = "Rite of Creation Protocol"
+description = "Orchestrate one deliverable through the phases that gate its release."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Rite of Creation Protocol
 
 Orchestrate one deliverable through the phases that gate its release. Decomposes the work into SDLC phases, selects which phases apply, assigns protocols and agent roles per phase, enforces phase exit criteria, and tracks execution through to a deliverable that is ready to reach its consumers.
@@ -21,7 +30,10 @@ Being a whole new project is the largest case of that, not the only one: a green
 
 Level 3 is phase altitude, so that is what you collect decisions about: which SDLC phases apply and which are skipped, the protocol and role assigned to each, the exit criteria that gate them, dependencies and parallel opportunities, and the constraints that bind every phase — platform, stack direction, hard deadlines. Disclose phase-level shape: what each phase must produce before the next can start, and where the sequencing is genuinely hard rather than merely convenient. Feature decomposition is not yours — it belongs to `/council-of-wizards` — and neither is implementation, which belongs to `/high-wizard`, `/pixel-wizard`, or `/quick-wizard`; choosing a module layout or an algorithm here decides for a phase nobody has investigated yet. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
 
-A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a phase at Step 15 or de-escalating to `/council-of-wizards` or `/high-wizard` at Step 7, read and follow the [Subplan Handoff component]([path-to-agent-memory-wizards]/components/subplan-handoff-write.md) and pass that payload with it. **A path alone is not a handoff.**
+A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a phase at Step 15 or de-escalating to `/council-of-wizards` or `/high-wizard` at Step 7, read and follow the Subplan Handoff component and pass that payload with it. **A path alone is not a handoff.**
+
+@start component id="rite-of-creation.subplan-handoff-write" ref="procedures/components/subplan-handoff-write.md"
+@end component
 
 ### Step 1: Read Template
 
@@ -46,7 +58,10 @@ Fill the [Vision]([path-to-agent-memory-wizards]/plan-templates/rite-of-creation
 
 ### Step 5: Read Inherited Context + Investigate Project + Prepare WAIT Options Round 1
 
-**First, if anything was settled before you started** — a `/forge-of-covenant` milestone that launched this rite, or a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it in the plan's `## INHERITED CONTEXT` section before investigating anything.
+**First, if anything was settled before you started** — a `/forge-of-covenant` milestone that launched this rite, or a design already agreed in conversation: read and follow the Inherited Context component. It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it in the plan's `## INHERITED CONTEXT` section before investigating anything.
+
+@start component id="rite-of-creation.subplan-handoff-read" ref="procedures/components/subplan-handoff-read.md"
+@end component
 
 Then investigate to understand what [USER-NAME] wants to build. This happens BEFORE any table filling — the agent must align understanding with [USER-NAME] first.
 
@@ -61,7 +76,10 @@ Be thorough — these are foundational decisions that shape every phase downstre
 
 ### Step 6: Present Project WAIT Options (Round 1)
 
-Present the project decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the first round, and the gate that closes each one.
+Present the project decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the Planning Decision component as you build it — it governs what earns a place, the frame that opens the first round, and the gate that closes each one.
+
+@start component id="rite-of-creation.planning-decision" ref="procedures/components/planning-decision.md"
+@end component
 Preamble: "Based on my investigation, here are the project decisions I need before planning"
 
 STOP. Present to [USER-NAME] for review. Do NOT fill any tables or proceed until [USER-NAME] confirms the project decisions.
@@ -74,7 +92,10 @@ After [USER-NAME] confirms the WAIT Options Round 1, fill the formal plan sectio
 
 2. **Fill Phase Menu** — Based on the confirmed project decisions, propose which SDLC phases apply. For each of the 9 phases:
    - Mark ✓ (included) or — (skipped) with rationale
-   - Recommend protocol level: read and follow the [Level Selection component]([path-to-agent-memory-wizards]/components/level-selection.md) — it decides this from what the phase holds
+   - Recommend protocol level: read and follow the Level Selection component — it decides this from what the phase holds
+
+@start component id="rite-of-creation.level-selection" ref="procedures/components/level-selection.md"
+@end component
    - Recommend agent role (generic roles, not specific agent names)
 
 3. **Fill Scope Gate** — Evaluate the work against the scope gate criteria:
@@ -178,7 +199,10 @@ Do a self-review by thinking critically:
 
 ### Step 14: Final Review
 
-Read and follow the [Plan Final Review component]([path-to-agent-memory-wizards]/components/plan-final-review.md). STOP. Wait for instruction.
+Read and follow the Plan Final Review component. STOP. Wait for instruction.
+
+@start component id="rite-of-creation.plan-final-review" ref="procedures/components/plan-final-review.md"
+@end component
 
 ### Step 15: Execute Phases
 
@@ -209,6 +233,9 @@ After all phases are DONE:
 
 ### Step 17: Move Rite Folder to Completed
 
-After [USER-NAME] confirms project is complete, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) — move the entire rite folder `[rite-folder]`.
+After [USER-NAME] confirms project is complete, follow the Archive Plan component — move the entire rite folder `[rite-folder]`.
+
+@start component id="rite-of-creation.archive-plan" ref="procedures/components/archive-plan.md"
+@end component
 
 ---

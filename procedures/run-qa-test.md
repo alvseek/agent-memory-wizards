@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "run-qa-test"
+kind = "procedure"
+title = "Run QA Test"
+description = "Run runtime verification on the qa/ bench — execute the R/I/A/O loop to verify the system actually runs."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Run QA Test
 
 Run runtime verification on the qa/ bench — execute the R/I/A/O loop to verify the system actually runs. Three tactics: **whole-stack module smoke** (did a change break the run path?), the **goal-driven fixture→e2e ladder** (does a specific feature produce the right outcome, driven the way the system really runs it?), and a **guided checklist pass** (walk a shipped feature's verification and sign it off). Closes the loop on *"does it actually work?"*.
@@ -164,7 +173,10 @@ Checklist {name}: {n}/{n} green ({a} automated, {m} manual).
 Archive to qa/checklists/completed/ as signed off? (y/n)
 ```
 
-On **y**, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) with destination `qa/checklists/completed/`.
+On **y**, follow the Archive Plan component with destination `qa/checklists/completed/`.
+
+@start component id="run-qa-test.archive-plan" ref="procedures/components/archive-plan.md"
+@end component
 
 If **any** row failed or was skipped, do not offer the archive — say which rows are outstanding.
 

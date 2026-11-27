@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "high-wizard"
+kind = "procedure"
+title = "High Wizard Protocol"
+description = "Execute smart planning with structural decision collection - forces \"ask before assuming\" by collecting implementation decisions in gated rounds, with recommended defaults, before writing any plan content or executing."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # High Wizard Protocol
 
 Execute smart planning with structural decision collection - forces "ask before assuming" by collecting implementation decisions in gated rounds, with recommended defaults, before writing any plan content or executing.
@@ -49,15 +58,27 @@ Fill the [Project Info]([path-to-agent-memory-wizards]/plan-templates/high-wizar
 
 ### Step 5: Investigate and Collect Decisions
 
-**First, if anything was settled before you started** — whether launched as a sub-plan or handed a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it before investigating anything.
+**First, if anything was settled before you started** — whether launched as a sub-plan or handed a design already agreed in conversation: read and follow the Inherited Context component. It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it before investigating anything.
 
-Then read and follow the [Planning Investigation component]([path-to-agent-memory-wizards]/components/planning-investigation.md) — it runs the shared investigation checklist and produces the findings this plan's decisions are built from. This is where the thinking happens — NOT in the plan document.
+@start component id="high-wizard.subplan-handoff-read" ref="procedures/components/subplan-handoff-read.md"
+@end component
+
+Then read and follow the Planning Investigation component — it runs the shared investigation checklist and produces the findings this plan's decisions are built from. This is where the thinking happens — NOT in the plan document.
+
+@start component id="high-wizard.planning-investigation" ref="procedures/components/planning-investigation.md"
+@end component
 
 ### Step 6: Present Decisions — One Round per Category
 
-Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
+Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The Planning Decision component governs what earns a place in a round and how a round is run — read and follow it before building the first round.
 
-Present the [planning rounds]([path-to-agent-memory-wizards]/components/planning-rounds.md).
+@start component id="high-wizard.planning-decision" ref="procedures/components/planning-decision.md"
+@end component
+
+Present the planning rounds.
+
+@start component id="high-wizard.planning-rounds" ref="procedures/components/planning-rounds.md"
+@end component
 
 Do NOT write any plan sections until every round that ran is confirmed.
 
@@ -138,11 +159,17 @@ Fill the [Implementation Phases]([path-to-agent-memory-wizards]/plan-templates/h
 
 ### Step 13: Self-Review + Auto-Fix
 
-Read and follow the [Plan Self-Review + Auto-Fix component]([path-to-agent-memory-wizards]/components/plan-self-review.md). If no issues found, proceed silently to Step 14.
+Read and follow the Plan Self-Review + Auto-Fix component. If no issues found, proceed silently to Step 14.
+
+@start component id="high-wizard.plan-self-review" ref="procedures/components/plan-self-review.md"
+@end component
 
 ### Step 14: Final Review + Integration Test Gate
 
-Read and follow the [Plan Final Review component]([path-to-agent-memory-wizards]/components/plan-final-review.md).
+Read and follow the Plan Final Review component.
+
+@start component id="high-wizard.plan-final-review" ref="procedures/components/plan-final-review.md"
+@end component
 
 Then settle, before any code is written, whether this plan's phases carry integration tests. Call `/qa-status` and read its bench and stack lines.
 
@@ -215,7 +242,10 @@ The delegated procedure will:
 
 ### Step 18: Move Plan to Completed
 
-After all implementation phases are done, logged, and both Quality Review (Step 16) + QA Handoff (Step 17) are resolved, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) — move the plan file `[plan-file].md`.
+After all implementation phases are done, logged, and both Quality Review (Step 16) + QA Handoff (Step 17) are resolved, follow the Archive Plan component — move the plan file `[plan-file].md`.
+
+@start component id="high-wizard.archive-plan" ref="procedures/components/archive-plan.md"
+@end component
 
 ### Step 19: Completion Report
 

@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "forge-of-covenant"
+kind = "procedure"
+title = "Forge of Covenant Protocol"
+description = "Facilitate project vision definition and milestone roadmap planning through guided exploration and structured decision-making."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Forge of Covenant Protocol
 
 Facilitate project vision definition and milestone roadmap planning through guided exploration and structured decision-making. The protocol flows as a PM facilitation discussion — using 7Q exploration to shape the vision, then WAIT Options at three phase gates for concrete decisions. The output is a living `grand-plan.md` that tracks milestones, deferrals, debt, and scope shifts across the project lifecycle.
@@ -19,7 +28,10 @@ This is a **Level 4** wizard protocol, the highest: it owns the **milestone**, a
 
 Level 4 is milestone altitude, so that is what you collect decisions about: the project vision and what "done" means for the whole of it, where each release boundary falls and what ships inside it, what is deliberately deferred and to which milestone, the principles and non-negotiables that bind every one of them, and the known debt along with where it gets paid. Disclose milestone-level shape: which services or components a release spans, and what must exist before the next milestone can begin. Everything below that belongs to someone else — phase structure to `/rite-of-creation`, feature decomposition to `/council-of-wizards`, implementation to `/high-wizard`, `/pixel-wizard`, or `/quick-wizard` — because at this altitude a stack or module choice is a guess about work three levels down. (`/wait-options-coding` governs *how* you present a decision, never *which* decisions are yours — that is this section.)
 
-A decision you push down does not disappear; it travels in the handoff, and the **Deferral & Debt Tracker** is the milestone-scoped form of the same discipline. That handoff is what every transfer out of this procedure carries — whether you are launching a milestone at Step 16 or de-escalating to `/rite-of-creation` at Step 10, read and follow the [Subplan Handoff component]([path-to-agent-memory-wizards]/components/subplan-handoff-write.md) and pass that payload with it. **A path alone is not a handoff.**
+A decision you push down does not disappear; it travels in the handoff, and the **Deferral & Debt Tracker** is the milestone-scoped form of the same discipline. That handoff is what every transfer out of this procedure carries — whether you are launching a milestone at Step 16 or de-escalating to `/rite-of-creation` at Step 10, read and follow the Subplan Handoff component and pass that payload with it. **A path alone is not a handoff.**
+
+@start component id="forge-of-covenant.subplan-handoff-write" ref="procedures/components/subplan-handoff-write.md"
+@end component
 
 ---
 
@@ -130,7 +142,10 @@ Invoke the `/wait-options-coding` command procedure to guide collecting project-
 - Risk mitigation strategy (for any high-likelihood/high-impact risks identified)
 - Timeline targets (rough dates per milestone)
 
-Present the project decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the first round, and the gate that closes each one.
+Present the project decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the Planning Decision component as you build it — it governs what earns a place, the frame that opens the first round, and the gate that closes each one.
+
+@start component id="forge-of-covenant.planning-decision" ref="procedures/components/planning-decision.md"
+@end component
 Preamble: "Based on our exploration, here are the project decisions I need to confirm (WAIT Options Round 1):"
 
 STOP. Present to [USER-NAME] for review. Do NOT fill any tables or proceed until [USER-NAME] confirms the project decisions.
@@ -245,7 +260,10 @@ For each milestone in the confirmed roadmap, discuss the detailed scope with [US
 - Which services/components are included in this release?
 - What specific deliverables will be produced?
 - What gets deferred to a later milestone? Why?
-- What protocol level fits? Read and follow the [Level Selection component]([path-to-agent-memory-wizards]/components/level-selection.md) — it decides this from what the milestone holds, and it is the only place that rule is stated.
+- What protocol level fits? Read and follow the Level Selection component — it decides this from what the milestone holds, and it is the only place that rule is stated.
+
+@start component id="forge-of-covenant.level-selection" ref="procedures/components/level-selection.md"
+@end component
 - Any known technical debt that will be created?
 
 Invoke the `/wait-options-coding` command procedure to guide collecting milestone-level decisions — run the command; its format rules are not in context. These are decisions about HOW each milestone will be executed. Group decisions by milestone (M1, M2, etc.).
@@ -309,7 +327,10 @@ Do a self-review by thinking critically:
 
 ### Step 15: Final Review
 
-Read and follow the [Plan Final Review component]([path-to-agent-memory-wizards]/components/plan-final-review.md).
+Read and follow the Plan Final Review component.
+
+@start component id="forge-of-covenant.plan-final-review" ref="procedures/components/plan-final-review.md"
+@end component
 
 ### ⛔ END OF PHASE 5
 
@@ -376,7 +397,10 @@ After all milestones are DONE and all Covenant Reviews completed:
 3. Verify the Deferral & Debt Tracker has no unresolved items
 4. Present completion summary to [USER-NAME]
 
-After [USER-NAME] confirms project is complete, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) — move the entire covenant folder `[covenant-folder]`.
+After [USER-NAME] confirms project is complete, follow the Archive Plan component — move the entire covenant folder `[covenant-folder]`.
+
+@start component id="forge-of-covenant.archive-plan" ref="procedures/components/archive-plan.md"
+@end component
 
 ### ⛔ END OF PHASE 6
 

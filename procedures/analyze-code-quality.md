@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "analyze-code-quality"
+kind = "procedure"
+title = "Analyze Code Quality"
+description = "Comprehensive code quality analysis for features, milestones, or any code scope."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Analyze Code Quality
 
 Comprehensive code quality analysis for features, milestones, or any code scope. Walks through structured quality dimensions, documents findings with severity, and presents WAIT Options so [USER-NAME] controls what gets fixed. Uses a working document copied from the analysis template to track the full investigation.

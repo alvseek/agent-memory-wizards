@@ -1,10 +1,11 @@
-# Planning Rounds (plan component)
-
-The rounds every implementation wizard presents, in order — the frame, scope, product flow, technical core, then integration points. **This is a component, not a standalone skill** — a wizard's decision step reads and follows it after the Planning Decision discipline.
-
-*Consumed by `/quick-wizard`, `/high-wizard` and `/pixel-wizard`, once each. Rounds are named, not numbered, so a wizard that adds its own round — pixel's visual target, which runs after the product-flow round — states it separately without forcing a renumber. Not nested inside another component; the overlay compiler inlines in a single pass.*
-
----
++++
+format_version = 2
+id = "planning-rounds"
+kind = "component"
+title = "Planning Rounds (plan component)"
+description = "The rounds every implementation wizard presents, in order — the frame, scope, product flow, technical core, then integration points. **This is a component, not a standalone skill** — a wizard's decision step reads and follows it after the Planning Decision discipline."
+# *Consumed by `/quick-wizard`, `/high-wizard` and `/pixel-wizard`, once each. Rounds are named, not numbered, so a wizard that adds its own round — pixel's visual target, which runs after the product-flow round — states it separately without forcing a renumber. Each wizard references it directly.*
++++
 
 The frame comes before any of these — what you take the task to be and the shape of the change you intend — because no plan section exists yet for [USER-NAME] to read. It is presented whether or not a single round below runs.
 

@@ -2,8 +2,8 @@
 REM setup-all-opencode.bat - Windows convenience wrapper for setup-all-opencode.py.
 REM
 REM Runs the .py installer (single source of truth) via Python so there's no separate logic to
-REM keep in sync. Requires Python 3. Prefers the official "py" launcher, then a PATH lookup,
-REM then the standard per-user install location.
+REM keep in sync. Prefers an activated virtual environment so it uses the Python that installed
+REM requirements.txt. Otherwise tries the official "py" launcher, PATH, and the per-user launcher.
 REM
 REM Usage:        setup-scripts\setup-all-opencode.bat
 REM Env override: AGENT_MEMORY_TARGET_DIR (passed through to the .py)
@@ -29,10 +29,15 @@ REM the System32 WSL "bash" that used to break this installer.
 set "PY="
 set "PYARGS="
 
-for /f "delims=" %%i in ('where py 2^>nul ^| findstr /v /i "WindowsApps"') do (
-    if not defined PY set "PY=%%i"
+if defined VIRTUAL_ENV if exist "%VIRTUAL_ENV%\Scripts\python.exe" (
+    set "PY=%VIRTUAL_ENV%\Scripts\python.exe"
 )
-if defined PY set "PYARGS=-3"
+if not defined PY (
+    for /f "delims=" %%i in ('where py 2^>nul ^| findstr /v /i "WindowsApps"') do (
+        if not defined PY set "PY=%%i"
+    )
+    if defined PY set "PYARGS=-3"
+)
 
 if not defined PY (
     for /f "delims=" %%i in ('where python 2^>nul ^| findstr /v /i "WindowsApps"') do (

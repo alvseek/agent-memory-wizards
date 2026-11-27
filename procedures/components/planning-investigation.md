@@ -1,10 +1,11 @@
-# Planning Investigation (plan component)
-
-Shared investigation checklist for the planning wizards. **This is a component, not a standalone skill** — a wizard's investigation step invokes it by reading and following this file. It produces **findings**: what exists, what could be done, and what would break. Turning findings into a decision form is the Planning Decision component's job, which your procedure reads separately.
-
-*Consumed by `/quick-wizard` and `/high-wizard`, which share an investigation shape. Wizards with a different one — `/pixel-wizard` (visual framework check), `/council-of-wizards` (feature decomposition), `/forge-of-covenant` (7Q exploration) — keep their own variant. A leaf wizard reads whatever was settled before it started — a parent's handoff, or a pre-planning discussion — in its own procedure before reaching this checklist; that read is a precondition to investigating, not a step within it.*
-
----
++++
+format_version = 2
+id = "planning-investigation"
+kind = "component"
+title = "Planning Investigation (plan component)"
+description = "Shared investigation checklist for the planning wizards. **This is a component, not a standalone skill** — a wizard's investigation step invokes it by reading and following this file. It produces **findings**: what exists, what could be done, and what would break. Turning findings into a decision form is the Planning Decision component's job, which your procedure reads separately."
+# *Consumed by `/quick-wizard` and `/high-wizard`, which share an investigation shape. Wizards with a different one — `/pixel-wizard` (visual framework check), `/council-of-wizards` (feature decomposition), `/forge-of-covenant` (7Q exploration) — keep their own variant. A leaf wizard reads whatever was settled before it started — a parent's handoff, or a pre-planning discussion — in its own procedure before reaching this checklist; that read is a precondition to investigating, not a step within it.*
++++
 
 This is where the thinking happens — NOT in the plan document. Work the checklist below IN ORDER and write down what you find. Do not decide yet what [USER-NAME] sees: everything here is a candidate, and candidates are filtered, framed and ordered afterwards. **Your own procedure's opening states what your altitude collects decisions about** — re-read it before you start, because it tells you which findings are yours to gather and which belong to a level above or below.
 

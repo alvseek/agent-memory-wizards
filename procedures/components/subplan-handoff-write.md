@@ -1,12 +1,13 @@
-# Subplan Handoff — Write Side (plan component)
-
-What a parent emits when it hands work down to a child wizard. **This is a component, not a standalone skill** — only a wizard that orchestrates sub-plans follows it; the child's half of the same contract is [subplan-handoff-read.md](subplan-handoff-read.md).
-
-*Consumed by `/council-of-wizards`, `/rite-of-creation` and `/forge-of-covenant` — the three orchestrating wizards, at every downward edge: launching a sub-plan, and de-escalating to a lower wizard.*
-
-Without this, a launch passes only a file path: the child investigates from zero and re-asks what the parent already settled, and its answer can contradict the parent's with nothing detecting it.
-
----
++++
+format_version = 2
+id = "subplan-handoff-write"
+kind = "component"
+title = "Subplan Handoff — Write Side (plan component)"
+description = "What a parent emits when it hands work down to a child wizard. **This is a component, not a standalone skill** — only a wizard that orchestrates sub-plans follows it; the child's half of the same contract is [subplan-handoff-read.md](subplan-handoff-read.md)."
+# *Consumed by `/council-of-wizards`, `/rite-of-creation` and `/forge-of-covenant` — the three orchestrating wizards, at every downward edge: launching a sub-plan, and de-escalating to a lower wizard.*
+#
+# Without this, a launch passes only a file path: the child investigates from zero and re-asks what the parent already settled, and its answer can contradict the parent's with nothing detecting it.
++++
 
 ## Write Side — the parent emits
 

@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "council-of-wizards"
+kind = "procedure"
+title = "Council of Wizards Protocol"
+description = "Orchestrate several /high-wizard, /pixel-wizard and /quick-wizard sub-plans into one cohesive delivery."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Council of Wizards Protocol
 
 Orchestrate several `/high-wizard`, `/pixel-wizard` and `/quick-wizard` sub-plans into one cohesive delivery. Decomposes a feature into requirements, decides whether multi-plan orchestration is needed, breaks the requirements into sub-plans with integration contracts, and tracks the batch through to a single release.
@@ -21,7 +30,10 @@ Level 2 is decomposition altitude, so that is what you collect decisions about: 
 
 Two decision rounds follow that altitude, in this order: the **requirements round**, which fixes what the feature must deliver and therefore what there is to decompose; then the **decomposition round**, which settles the boundaries, the contracts, the protocol for each sub-plan and the parallel strategy named above. Build one, present it, and wait for [USER-NAME] to clear it before building the next.
 
-A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a sub-plan at Step 17 or de-escalating to `/high-wizard` at Step 7, read and follow the [Subplan Handoff component]([path-to-agent-memory-wizards]/components/subplan-handoff-write.md) and pass that payload with it. **A path alone is not a handoff.**
+A decision you push down does not disappear; it travels in the handoff. That handoff is what every transfer out of this procedure carries — whether you are launching a sub-plan at Step 17 or de-escalating to `/high-wizard` at Step 7, read and follow the Subplan Handoff component and pass that payload with it. **A path alone is not a handoff.**
+
+@start component id="council-of-wizards.subplan-handoff-write" ref="procedures/components/subplan-handoff-write.md"
+@end component
 
 ### Step 1: Read Template
 
@@ -46,7 +58,10 @@ Fill the [Feature Info]([path-to-agent-memory-wizards]/plan-templates/council-of
 
 ### Step 5: Read Inherited Context + Investigate Feature
 
-**First, if anything was settled before you started** — a `/rite-of-creation` or `/forge-of-covenant` parent that launched this council, or a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it in the plan's `## INHERITED CONTEXT` section before investigating anything.
+**First, if anything was settled before you started** — a `/rite-of-creation` or `/forge-of-covenant` parent that launched this council, or a design already agreed in conversation: read and follow the Inherited Context component. It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it in the plan's `## INHERITED CONTEXT` section before investigating anything.
+
+@start component id="council-of-wizards.subplan-handoff-read" ref="procedures/components/subplan-handoff-read.md"
+@end component
 
 Then investigate the feature to understand what [USER-NAME] wants delivered. This happens BEFORE any table filling — the agent must align understanding with [USER-NAME] first.
 
@@ -59,7 +74,10 @@ Be exhaustive — missing a requirement here means a missing sub-plan later.
 
 ### Step 6: Requirements Round
 
-Present the requirements to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the round, and the gate that closes it.
+Present the requirements to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the Planning Decision component as you build it — it governs what earns a place, the frame that opens the round, and the gate that closes it.
+
+@start component id="council-of-wizards.requirements-decision" ref="procedures/components/planning-decision.md"
+@end component
 Preamble: "Based on my investigation, here's what I think you want"
 
 STOP. Present to [USER-NAME] for review. Do NOT fill any tables or proceed until [USER-NAME] confirms the requirements.
@@ -106,7 +124,10 @@ Invoke the `/wait-options-coding` command procedure to guide collecting decompos
 
 ### Step 9: Decomposition Round
 
-Present the decomposition decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) as you build it — it governs what earns a place, the frame that opens the round, and the gate that closes it.
+Present the decomposition decisions to [USER-NAME] by invoking the `/wait-options-coding` command procedure. Follow the Planning Decision component as you build it — it governs what earns a place, the frame that opens the round, and the gate that closes it.
+
+@start component id="council-of-wizards.decomposition-decision" ref="procedures/components/planning-decision.md"
+@end component
 Preamble: "Here are the decomposition decisions I need before breaking this into sub-plans"
 
 STOP. Present to [USER-NAME] for review. Do NOT proceed to decomposition until decisions are confirmed.
@@ -119,7 +140,10 @@ Group the confirmed requirements into sub-plans, **informed by the confirmed dec
 
 **Guidelines:**
 - Each sub-plan groups related requirements that naturally belong together
-- Choose the protocol per sub-plan by reading the [Level Selection component]([path-to-agent-memory-wizards]/components/level-selection.md) — it decides from what the sub-plan holds, and `/rite-of-creation` is not among the choices here: a sub-plan that needs its own gated phases means the boundary was drawn wrong.
+- Choose the protocol per sub-plan by reading the Level Selection component — it decides from what the sub-plan holds, and `/rite-of-creation` is not among the choices here: a sub-plan that needs its own gated phases means the boundary was drawn wrong.
+
+@start component id="council-of-wizards.level-selection" ref="procedures/components/level-selection.md"
+@end component
 - Name sub-plan files inside the council folder: `SP-[N]-[subplan-name].md` (e.g., `SP-1-api-endpoints.md`). A `/quick-wizard` sub-plan keeps its plan in plan mode or in conversation, so it is written to that path once approved, at Step 17.
 - Assign IDs: SP-1, SP-2, SP-3...
 
@@ -190,7 +214,10 @@ Create placeholder rows in the [Execution Log]([path-to-agent-memory-wizards]/pl
 
 ### Step 15: Self-Review + Auto-Fix
 
-Read and follow the [Plan Self-Review + Auto-Fix component]([path-to-agent-memory-wizards]/components/plan-self-review.md), then add the two checks it cannot make, because they are properties of the set rather than of any one plan:
+Read and follow the Plan Self-Review + Auto-Fix component, then add the two checks it cannot make, because they are properties of the set rather than of any one plan:
+
+@start component id="council-of-wizards.plan-self-review" ref="procedures/components/plan-self-review.md"
+@end component
 
 - **Every requirement assigned exactly once** — each R appears in exactly one sub-plan's Requirements cell, and no R is missing from the Sub-Plans Table.
 - **No sub-plan deserves its own decomposition** — a sub-plan that would need a council of its own means the boundary was drawn wrong, not that it needs a bigger protocol. Raise it as a boundary change.
@@ -201,7 +228,10 @@ If issues are found, auto-fix consistency issues directly in the plan file. For 
 
 ### Step 16: Final Review
 
-Read and follow the [Plan Final Review component]([path-to-agent-memory-wizards]/components/plan-final-review.md).
+Read and follow the Plan Final Review component.
+
+@start component id="council-of-wizards.plan-final-review" ref="procedures/components/plan-final-review.md"
+@end component
 
 STOP. Wait for [USER-NAME]'s instruction to begin executing sub-plans.
 
@@ -235,6 +265,9 @@ After all sub-plans are DONE:
 
 ### Step 19: Move Council Folder to Completed
 
-After [USER-NAME] confirms feature is complete, follow the [Archive Plan component]([path-to-agent-memory-wizards]/components/archive-plan.md) — move the entire council folder `[council-folder]` (core plan + sub-plans + contracts).
+After [USER-NAME] confirms feature is complete, follow the Archive Plan component — move the entire council folder `[council-folder]` (core plan + sub-plans + contracts).
+
+@start component id="council-of-wizards.archive-plan" ref="procedures/components/archive-plan.md"
+@end component
 
 ---

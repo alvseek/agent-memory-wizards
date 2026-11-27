@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "integration-test"
+kind = "procedure"
+title = "Integration Test"
+description = "Build and run one integration test end to end — the fixtures that reach its precondition, the test itself, and the run that proves it."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Integration Test
 
 Build and run one integration test end to end — the fixtures that reach its precondition, the test itself, and the run that proves it. Scope is a single real boundary.

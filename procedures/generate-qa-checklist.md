@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "generate-qa-checklist"
+kind = "procedure"
+title = "Generate QA Checklist"
+description = "Build the per-feature verification checklist for a change that just shipped — the artifact that answers \"is it actually right?\", later, by a human, with the stack up."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Generate QA Checklist
 
 Build the per-feature verification checklist for a change that just shipped — the artifact that answers *"is it actually right?"*, later, by a human, with the stack up.

@@ -23,6 +23,8 @@ import shutil
 import sys
 from pathlib import Path
 
+from procedure_composer import CompositionError
+
 _ROOT = Path(__file__).resolve().parents[1]
 
 # Installed folders are prefixed so a skill directory shared with the memory core, the coding
@@ -193,7 +195,7 @@ def install(
     installed: list[str] = []
     manifest_lines: list[str] = []
     for report in reports:
-        text = Path(report.out_path).read_text(encoding="utf-8")
+        text = report.out_path.read_bytes().decode("utf-8")
         folder = target_dir / f"{FOLDER_PREFIX}{report.name}"
         folder.mkdir(parents=True, exist_ok=True)
         # Encode before opening the target: a write that fails mid-encode would otherwise
@@ -321,7 +323,11 @@ def run(
         print(f"Error: wizards procedures directory not found: {_ROOT / 'procedures'}")
         return 1
 
-    installed, removed = install(target_dir, manifest_name, sibling_manifest_names)
+    try:
+        installed, removed = install(target_dir, manifest_name, sibling_manifest_names)
+    except CompositionError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
 
     if removed:
         print(f"Cleaned up {removed} stale wizards skills\n")

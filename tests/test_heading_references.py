@@ -1,6 +1,6 @@
 """Prose references to a `## Heading` must point at a heading that exists.
 
-`compile-procedures.py --strict` verifies *link* references — components and templates.
+`compile-procedures.py --strict` verifies component directives and template links.
 It cannot see a sentence like "check `## WAIT Options Scope` above", so a heading can be
 renamed or removed while every automated check stays green and the instruction quietly
 points at nothing.
@@ -21,7 +21,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-_AUTHORED_DIRS = ("procedures", "components", "plan-templates", "templates")
+_AUTHORED_DIRS = ("procedures", "plan-templates", "templates")
 
 # A backticked prose reference: `## Some Heading`
 _REFERENCE = re.compile(r"`#{1,4}\s+([^`\n]+?)\s*`")

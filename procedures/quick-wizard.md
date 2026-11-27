@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "quick-wizard"
+kind = "procedure"
+title = "Quick Wizard Protocol"
+description = "Execute lightweight smart planning with decision collection and approval before execution — the same decision discipline as High Wizard, using the inline plan template below."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Quick Wizard Protocol
 
 Execute lightweight smart planning with decision collection and approval before execution — the same decision discipline as High Wizard, using the inline plan template below. Keep the plan in IDE plan mode or conversation by default, or explicitly save the specification and compact execution log in one file. The scope gate escalates complex work to /high-wizard; saving a small plan does not make it complex.
@@ -28,9 +37,15 @@ Level 0 is the concrete change, so that is what you collect decisions about — 
 
 ### Step 1: Investigate and Collect Decisions
 
-**First, if anything was settled before you started** — whether launched as a sub-plan or handed a design already agreed in conversation: read and follow the [Inherited Context component]([path-to-agent-memory-wizards]/components/subplan-handoff-read.md). It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it before investigating anything.
+**First, if anything was settled before you started** — whether launched as a sub-plan or handed a design already agreed in conversation: read and follow the Inherited Context component. It tells you what you inherited, what you may not reopen, and where to find it when no payload was passed. Record it before investigating anything.
 
-Then read and follow the [Planning Investigation component]([path-to-agent-memory-wizards]/components/planning-investigation.md) — it runs the shared investigation checklist and produces the findings this plan's decisions are built from.
+@start component id="quick-wizard.subplan-handoff-read" ref="procedures/components/subplan-handoff-read.md"
+@end component
+
+Then read and follow the Planning Investigation component — it runs the shared investigation checklist and produces the findings this plan's decisions are built from.
+
+@start component id="quick-wizard.planning-investigation" ref="procedures/components/planning-investigation.md"
+@end component
 
 ### Step 2: Scope Gate Assessment
 
@@ -52,9 +67,15 @@ After investigation, assess whether the task is a small Quick Wizard change or n
 
 ### Step 3: Present Decisions — One Round per Category
 
-Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The [Planning Decision component]([path-to-agent-memory-wizards]/components/planning-decision.md) governs what earns a place in a round and how a round is run — read and follow it before building the first round.
+Decisions are not presented in one block. Each category the planning rounds declare gets its own round, in their declared order, and every round is a gate: present, STOP, and wait for [USER-NAME] to clear it before building the next. The Planning Decision component governs what earns a place in a round and how a round is run — read and follow it before building the first round.
 
-Present the [planning rounds]([path-to-agent-memory-wizards]/components/planning-rounds.md).
+@start component id="quick-wizard.planning-decision" ref="procedures/components/planning-decision.md"
+@end component
+
+Present the planning rounds.
+
+@start component id="quick-wizard.planning-rounds" ref="procedures/components/planning-rounds.md"
+@end component
 
 Do NOT proceed until every round that ran is confirmed.
 

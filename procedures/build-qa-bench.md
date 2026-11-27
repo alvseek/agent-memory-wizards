@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "build-qa-bench"
+kind = "procedure"
+title = "Build QA Bench"
+description = "Build a project's QA bench — the rig the tests run on — map-driven and honest."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Build QA Bench
 
 Build a project's QA **bench** — the rig the tests run on — map-driven and honest. Reads the audit from `/map-qa-instrument`, then fills the gaps by progressively writing `qa/README.md` (the R/I/A/O spine) across a 4-phase lifecycle: **DEFINE → BUILD → TEST → DOCUMENT**.
@@ -98,7 +107,10 @@ The default posture is **build**. Work each phase by its Status:
 
 Build in loop order — RESET → INJECT → ACT → OBSERVE (config feeds INJECT/ACT) — so each phase's clean state is ready for the next. As each mechanism becomes real, its Mechanism cell links it: by the end of Phase 2, every row points at a working script.
 
-For a `missing` phase, follow the [Build R/I/A/O Mechanisms component]([path-to-agent-memory-wizards]/components/build-riao-mechanisms.md) — the per-part (RESET / INJECT / ACT / OBSERVE) scaffold recipes — and shape the files per the [Templates](#templates) below.
+For a `missing` phase, follow the Build R/I/A/O Mechanisms component — the per-part (RESET / INJECT / ACT / OBSERVE) scaffold recipes — and shape the files per the [Templates](#templates) below.
+
+@start component id="build-qa-bench.build-riao-mechanisms" ref="procedures/components/build-riao-mechanisms.md"
+@end component
 
 > *The hard line: build only the missing engine parts; the index links everything else, and that index is the only contract `/run-qa-test` reads.*
 

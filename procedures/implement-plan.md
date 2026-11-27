@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "implement-plan"
+kind = "procedure"
+title = "Implement Plan"
+description = "Start implementing the approved plan."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Implement Plan
 
 Start implementing the approved plan. This command ensures the AI follows the Execution Protocol from the plan file strictly, even after context compaction.

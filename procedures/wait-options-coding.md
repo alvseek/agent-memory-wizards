@@ -1,3 +1,10 @@
++++
+format_version = 2
+id = "wait-options-coding"
+kind = "procedure"
+title = "WAIT Options — Coding Extension"
+description = "Extends the core /wait-options format with the vocabulary and variants that only apply when the decision is about code."
++++
 # WAIT Options — Coding Extension
 
 Extends the core `/wait-options` format with the vocabulary and variants that only apply when the decision is about code. Coding and repo procedures invoke **this** rather than `/wait-options` directly: it inherits the base format — context depth, options, confidence signals, reason paragraph, open questions, presentation style — and adds what implementation altitude needs on top.

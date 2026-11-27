@@ -98,8 +98,8 @@ def test_skill_body_is_the_compiled_procedure_verbatim(tmp_path: Path) -> None:
     """
     target, out, installed, _ = _install(tmp_path)
     for name in installed:
-        skill = (target / f"{sk.FOLDER_PREFIX}{name}" / "SKILL.md").read_text(encoding="utf-8")
-        compiled = (out / f"{name}.md").read_text(encoding="utf-8")
+        skill = (target / f"{sk.FOLDER_PREFIX}{name}" / "SKILL.md").read_bytes()
+        compiled = (out / f"{name}.md").read_bytes()
         assert skill.endswith(compiled), name
 
 

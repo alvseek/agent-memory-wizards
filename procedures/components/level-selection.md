@@ -1,10 +1,11 @@
-# Level Selection (plan component)
-
-Which wizard a piece of work belongs to, decided by what that work holds rather than by how large it feels. **This is a component, not a standalone skill** — an orchestrating wizard reads and follows it at the step where it assigns a protocol to a child.
-
-*Consumed by `/forge-of-covenant`, `/rite-of-creation` and `/council-of-wizards`, the three wizards that choose a protocol for their children. The leaf wizards (`/high-wizard`, `/pixel-wizard`, `/quick-wizard`) never choose a child, so each states the unit it carries in its own opening instead of reading this.*
-
----
++++
+format_version = 2
+id = "level-selection"
+kind = "component"
+title = "Level Selection (plan component)"
+description = "Which wizard a piece of work belongs to, decided by what that work holds rather than by how large it feels. **This is a component, not a standalone skill** — an orchestrating wizard reads and follows it at the step where it assigns a protocol to a child."
+# *Consumed by `/forge-of-covenant`, `/rite-of-creation` and `/council-of-wizards`, the three wizards that choose a protocol for their children. The leaf wizards (`/high-wizard`, `/pixel-wizard`, `/quick-wizard`) never choose a child, so each states the unit it carries in its own opening instead of reading this.*
++++
 
 ## The units
 

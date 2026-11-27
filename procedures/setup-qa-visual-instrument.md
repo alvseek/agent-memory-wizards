@@ -1,3 +1,12 @@
++++
+format_version = 2
+id = "setup-qa-visual-instrument"
+kind = "procedure"
+title = "Setup QA Visual Instrument"
+description = "Set up a project-type-aware screenshot mechanism so agents can take screenshots of the running app and compare them to design references."
+argument_name = "argument"
+argument_description = "Input text in the format described by this procedure's Arguments section"
++++
 # Setup QA Visual Instrument
 
 Set up a project-type-aware screenshot mechanism so agents can take screenshots of the running app and compare them to design references. Called automatically by `/pixel-wizard` when no framework is found, or invoked standalone to set up visual testing for any project.

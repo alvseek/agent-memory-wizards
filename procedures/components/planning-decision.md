@@ -1,10 +1,11 @@
-# Planning Decision (plan component)
-
-Shared discipline for turning investigation findings into a decision form [USER-NAME] can actually answer. **This is a component, not a standalone skill** — a planning wizard reads and follows this file before it presents anything.
-
-*Consumed by every planning protocol at every altitude — `/quick-wizard`, `/high-wizard`, `/pixel-wizard`, `/council-of-wizards`, `/rite-of-creation`, `/forge-of-covenant`. It is deliberately altitude-blind: it never says which decisions are yours, and your own procedure's opening declares that. This file governs what happens to them between the investigation and the page.*
-
----
++++
+format_version = 2
+id = "planning-decision"
+kind = "component"
+title = "Planning Decision (plan component)"
+description = "Shared discipline for turning investigation findings into a decision form [USER-NAME] can actually answer. **This is a component, not a standalone skill** — a planning wizard reads and follows this file before it presents anything."
+# *Consumed by every planning protocol at every altitude — `/quick-wizard`, `/high-wizard`, `/pixel-wizard`, `/council-of-wizards`, `/rite-of-creation`, `/forge-of-covenant`. It is deliberately altitude-blind: it never says which decisions are yours, and your own procedure's opening declares that. This file governs what happens to them between the investigation and the page.*
++++
 
 Three concerns meet here and none of them overlaps. Your procedure's opening names the decision categories your altitude is made of. `/wait-options-coding`, and the core `/wait-options` beneath it, owns the shape a presented decision takes. This file owns everything in between: which of your findings earn a place, what [USER-NAME] is told before he sees any of them, and how they reach him — one gated round at a time.
 
